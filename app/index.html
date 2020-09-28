@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Start Optimazed</title>
+	<meta name="description" content="Startup HTML Optimized">
+	<meta name="viewport" content="width=device-width">
+	<link rel="icon" href="images/favicon.png">
+	<meta property="og:image" content="images/dest/preview.jpg">
+	<link rel="stylesheet" href="css/app.min.css?v=1">
+
+</head>
+
+<body>
+
+	<header class="header">
+		<div class="header__container container">
+
+			<a href="/" class="header__logo">
+				<img src="img/dest/header__logo.png" alt="logo">
+			</a>
+
+			<nav class="header__nav">
+				<ul>
+					<li><a href="#about">О компании</a></li>
+					<li><a href="#services">Услуги</a></li>
+					<li><a href="#step">Этапы</a></li>
+					<li><a href="#advantages">Преимущества</a></li>
+				</ul>
+				<a href="#" class="header__nav_btn header__btn order__open">Написать нам</a>
+			</nav>
+
+			<button class="hamburger" type="button">
+				<span class="hamburger__box">
+					<span class="hamburger__item"></span>
+				</span>
+			</button>
+
+		</div>
+	</header>
+
+	<section class="">
+		<div class="container">
+			<h1>Start</h1>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="footer__container container"></div>
+	</footer>
+
+	<div class="modal modal--services">
+		<form action="sendmail.php" class="modal__form form" method="post">
+
+			<button class="close modal__close" type="button">
+				<span></span>
+				<span></span>
+			</button>
+
+			<h2 class="modal__title">Оставьте заявку на <br>услугу</h2>
+			<input type="hidden" name="subject" value="Оставьте заявку на услугу">
+
+			<div class="modal__line">
+				<input type="text" name="name" placeholder="Имя" class="modal__input" required>
+			</div>
+			<div class="modal__line">
+				<input type="tel" name="phone" placeholder="Телефон" class="modal__input" required>
+			</div>
+			<div class="modal__line">
+				<button type="submit" class="modal__btn" name="submit">Отправить</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal modal--thanks">
+		<button class="close thanks_close" type="button">
+			<span></span>
+			<span></span>
+		</button>
+		<h3>Спасибо за доверие!</h3>
+		<p>Мы обязательно с вами свяжемся!</p>
+	</div>
+
+	<script src="js/app.min.js"></script>
+
+</body>
+</html>
