@@ -38,6 +38,10 @@
 	border-bottom: 4px solid #ae132e
 	padding: 0 50px
 
+	+r(992)
+		height: 50px
+		font-size: 16px
+
 	&:hover,
 	&:focus
 		border-bottom: 4px solid #ae132e
@@ -51,14 +55,13 @@
 // -----HAMBURGER-----
 .hamburger
 	display: none
-	position: absolute
-	right: 15px
-	top: 55%
 	padding: 0
-	transform: translate(0, -50%)
 	border: none
 	background-color: transparent
 	transition: all .3s
+
+	+r(992)
+		display: block
 
 	&:focus,
 	&:hover
@@ -77,7 +80,7 @@
 		top: 0
 		width: 35px
 		height: 3px
-		background-color: #fff
+		background-color: #000
 		border-radius: 4px
 		transition: all .2s
 		bottom: 0
@@ -88,7 +91,7 @@
 			position: absolute
 			right: 0
 			top: -10px
-			background-color: #fff
+			background-color: #000
 			width: 35px
 			height: 3px
 			transition: transform 0s 0.1s
@@ -99,11 +102,10 @@
 			position: absolute
 			right: 0
 			top: -20px
-			background-color: #fff
+			background-color: #000
 			width: 35px
 			height: 3px
 			transition: transform 0s 0.1s
-
 
 	&--active
 		z-index: 1001
@@ -153,6 +155,9 @@
 			+r(1400)
 				font-size: 14px
 
+			+r(1200)
+				display: none
+
 		img
 			width: 170px
 			height: auto
@@ -183,6 +188,9 @@
 				height: 100%
 
 	&__nav
+
+		+r(992)
+			display: none
 		
 		ul
 			display: flex
@@ -222,6 +230,9 @@
 			color: $accent
 			line-height: 1
 
+			+r(1200)
+				font-size: 26px
+
 			&:hover,
 			&:focus
 				color: $text
@@ -252,6 +263,10 @@
 	margin-top: 95px
 	padding-top: 120px
 	padding-bottom: 310px
+
+	+r(992)
+		text-align: center
+		padding: 100px 0
 
 	&__arrow
 		position: absolute
@@ -297,7 +312,13 @@
 		font-size: 48px
 		color: #ffffff
 		margin-bottom: 36px
-	
+
+		+r(1200)
+			max-width: 88%
+		
+		+r(992)
+			max-width: 100%
+
 	&__subtitle
 		max-width: 59%
 		width: 100%
@@ -305,14 +326,26 @@
 		color: #ffffff
 		margin-bottom: 30px
 
+		+r(1200)
+			max-width: 88%
+		
+		+r(992)
+			max-width: 100%
+
 	&__btn
 		@extend .btn
+
+		+r(992)
+			margin: 0 auto
 
 
 .info
 	margin-top: -180px
 	margin-bottom: -89px
 	z-index: 1
+
+	+r(992)
+		margin: 0
 
 	&__container
 		background-color: #fff
@@ -325,16 +358,29 @@
 		border: 2px solid rgba($accent, .1)
 		padding: 32px
 		border-radius: 15px
-	
+
+		+r(992)
+			align-items: flex-start
+
 	&__item
 		width: 25%
 		text-align: center
-		font-size: 18px
 		line-height: 1.3
+
+		+r(992)
+			width: 48%
+		
+		&:first-child
+			+r(992)
+				margin-bottom: 25px
 
 	img
 		height: 85px
 		margin-bottom: 25px
+
+		+r(992)
+			height: 70px
+			margin-bottom: 10px
 
 
 .director
@@ -342,26 +388,45 @@
 	background-image: url(../img/dest/director__bg.jpg)
 	padding: 160px 0
 
+	+r(1200)
+		+cover
+		padding: 130px 0 70px
+
+	+r(992)
+		padding: 40px 0
+
 	&__container
 		+between
 
 	&__description
 		width: 55%
 
+		+r(992)
+			width: 72%
+
 	&__title
 		font-size: 48px
 		margin-bottom: 25px
+
+		+r(1200)
+			font-size: 34px
 
 		span
 			color: $accent
 
 	&__text
-		font-size: 18px
 		line-height: 2
 		margin-bottom: 60px
 
+		+r(1200)
+			line-height: 1.6
+			margin-bottom: 30px
+
 	&__img
 		width: 45%
+
+		+r(992)
+			width: 28%
 
 		img
 			width: 100%
@@ -369,6 +434,9 @@
 	&__soc
 		display: flex
 		font-size: 24px
+
+		+r(1200)
+			font-size: 18px
 
 		b
 			color: $accent
@@ -395,9 +463,15 @@
 .services
 	padding: 80px 0 40px
 
+	+r(992)
+		padding: 40px 0
+
 	&__title
 		@extend .director__title
 		margin-bottom: 55px
+
+		+r(1200)
+			margin-bottom: 30px
 
 	&__list
 		+between
@@ -408,6 +482,9 @@
 		width: 31%
 		color: $text
 		margin-bottom: 30px
+
+		+r(992)
+			width: 48%
 
 		&:hover
 			color: $text
@@ -459,7 +536,6 @@
 		margin-bottom: 5px
 
 	&__text
-		font-size: 18px
 		font-weight: 300
 
 
@@ -469,12 +545,14 @@
 		@extend .director__title
 		margin-bottom: 45px
 
+		+r(1200)
+			margin-bottom: 30px
+
 	&__slider
 		height: 320px
 
 	&__slide
 		text-align: center
-		font-size: 18px
 		background: #fff
 		height: calc((100% - 30px) / 3)
 		display: flex
@@ -488,6 +566,12 @@
 	background-position: center bottom
 	padding-top: 70px
 	padding-bottom: 0
+	overflow: hidden
+	position: relative
+
+	+r(992)
+		+cover
+		padding-bottom: 40px
 
 	&__container
 		+between
@@ -495,9 +579,17 @@
 	&__content
 		width: 52%
 		padding-top: 45px
+		z-index: 1
 
 		+r(1400)
 			width: 61%
+
+		+r(1200)
+			width: 75%
+			padding-top: 0
+		
+		+r(992)
+			width: 90%
 
 	&__title
 		@extend .director__title
@@ -508,6 +600,10 @@
 		font-weight: 500
 		line-height: 1.2
 		margin-bottom: 35px
+
+		+r(1200)
+			font-size: 24px
+			margin-bottom: 25px
 
 	&__form
 		+between
@@ -532,6 +628,20 @@
 
 	&__img
 		width: 30%
+
+		+r(1200)
+			width: 22%
+		
+		+r(992)
+			width: .1px
+			z-index: 0
+
+		img
+			+r(992)
+				position: absolute
+				right: -50px
+				top: 0
+
 
 
 .footer

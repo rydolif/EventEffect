@@ -6,8 +6,6 @@ $fonts: 'Geometria', sans-serif
 //----------------------color---------------------
 $accent: #e92c4d
 $text: #141620
-
-
 //---------------------end-color---------------------
 
 body
@@ -15,7 +13,7 @@ body
 	position: relative
 	min-width: 320px
 	font-family: $fonts
-	font-size: 14px
+	font-size: 18px
 	color: $text
 	line-height: 1.4
 	font-weight: 400
@@ -23,6 +21,12 @@ body
 	display: flex
 	flex-direction: column
 	justify-content: space-between
+
+	+r(1200)
+		font-size: 16px
+
+	+r(992)
+		font-size: 14px
 
 ::selection
 	background-color: $accent
@@ -90,11 +94,17 @@ input, select
 	line-height: 65px
 	padding: 0 25px
 
+	+r(992)
+		height: 50px
+		line-height: 50px
+
 	&::placeholder
 		line-height: 65px
 		font-size: 16px
 		color: #000000
 
+		+r(992)
+			line-height: 50px
 
 textarea
 	&::placeholder

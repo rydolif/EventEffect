@@ -2,16 +2,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	//----------------------SLIDER-hero----------------------
 		var mySwiper = new Swiper('.partners__slider', {
-			slidesPerView: 6,
+			slidesPerView: 2,
 			slidesPerColumn: 3,
-			// pagination: {
-			// 	el: '.hero__pagination',
-			// 	clickable: 'true',
-			// },
-			// navigation: {
-			// 	nextEl: '.hero__next',
-			// 	prevEl: '.hero__prev',
-			// },
+			pagination: {
+				el: '.hero__pagination',
+				clickable: 'true',
+			},
+			breakpoints: {
+				// when window width is >= 320px
+				320: {
+					slidesPerView: 2,
+					slidesPerColumn: 3,
+				},
+				// when window width is >= 480px
+				576: {
+					slidesPerView: 3,
+					slidesPerColumn: 3,
+				},
+				// when window width is >= 767px
+				767: {
+					slidesPerView: 4,
+					slidesPerColumn: 3,
+				},
+				// when window width is >= 992px
+				992: {
+					slidesPerView: 5,
+					slidesPerColumn: 3,
+				},
+				// when window width is >= 640px
+				1200: {
+					slidesPerView: 6,
+					slidesPerColumn: 3,
+				}
+			}
 		});
 
 	
