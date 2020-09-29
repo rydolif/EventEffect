@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 	
 		};
-		// headerFixed('.header', '.header--active');
+		headerFixed('.header', '.header--active');
 	
 	//----------------------HAMBURGER-----------------------
 		const hamburger = (hamburgerButton, hamburgerNav, hamburgerHeader) => {

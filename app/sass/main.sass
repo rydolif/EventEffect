@@ -25,18 +25,25 @@
 	display: flex
 	justify-content: center
 	align-items: center
-	height: 45px
-	font-size: 18px
-	color: $accent
+	height: 65px
+	font-size: 20px
+	color: #fff
+	background-color: $accent
 	font-weight: 700
-	border-radius: 20px
+	border-radius: 5px
 	max-width: fit-content
+	border-bottom: 4px solid #ae132e
+	padding: 0 50px
 
 	&:hover,
 	&:focus
-		border: 1px solid $accent
+		border-bottom: 4px solid #ae132e
 		background: $accent
 		color: #fff
+		box-shadow: 0 0 15px 0 rgba(#fff, .5)
+	
+	&:focus
+		box-shadow: 0 0 15px 0 rgba(#fff, .3)
 
 // -----HAMBURGER-----
 .hamburger
@@ -113,6 +120,13 @@
 	right: 0
 	left: 0
 	padding: 15px 0
+	z-index: 1000
+	background-color: #ffffff
+	+transition
+
+	&--active
+		box-shadow: 0 0 15px 0 rgba(#000, .3)
+		padding: 5px 0
 
 	&__container
 		+between
@@ -217,12 +231,228 @@
 				margin-right: 8px
 
 
-.hero
-	margin-top: 95px
+.sity
+	color: $accent
 
+
+.hero
+	+cover
+	background-image: url(../img/dest/hero__bg.png)
+	position: relative
+	margin-top: 95px
+	padding-top: 120px
+	padding-bottom: 310px
+
+	&__arrow
+		position: absolute
+		left: 30px
+		top: 0
+		bottom: 0
+		height: 100%
+		width: 1px
+		background-color: rgba(#fff, .15)
+
+		a
+			position: absolute
+			top: 30%
+			left: -16px
+			transform: translate(0, -50%)
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 34px
+			height: 34px
+			border: 1px solid rgba(#fff, .15)
+			border-radius: 50%
+			background-color: #0a4750
+
+			&:hover
+				border-color: #fff
+
+				img
+					opacity: .9
+		
+		img
+			+transition
+			height: 50%
+			width: 50%
+			opacity: 0.5
+
+	&__title
+		max-width: 59%
+		width: 100%
+		font-size: 48px
+		color: #ffffff
+		margin-bottom: 36px
+	
+	&__subtitle
+		max-width: 59%
+		width: 100%
+		font-size: 26px
+		color: #ffffff
+		margin-bottom: 30px
+
+	&__btn
+		@extend .btn
+
+
+.info
+	margin-top: -180px
+	margin-bottom: -89px
+	z-index: 1
+
+	&__container
+		background-color: #fff
+		padding: 11px
+		border-radius: 15px
+		box-shadow: 0 0 25px 0 rgba(#000, .3)
+
+	&__list
+		+between
+		border: 2px solid rgba($accent, .1)
+		padding: 32px
+		border-radius: 15px
+	
+	&__item
+		width: 25%
+		text-align: center
+		font-size: 18px
+		line-height: 1.3
+
+	img
+		height: 85px
+		margin-bottom: 25px
+
+
+.director
+	background-repeat: repeat-x
+	background-image: url(../img/dest/director__bg.jpg)
+	padding: 170px 0
+
+	&__container
+		+between
+
+	&__description
+		width: 53%
+
+	&__title
+		font-size: 48px
+		margin-bottom: 35px
+
+		span
+			color: $accent
+
+	&__text
+		font-size: 18px
+		line-height: 2
+		margin-bottom: 60px
+
+	&__img
+		width: 47%
+
+		img
+			width: 100%
+
+	&__soc
+		display: flex
+		font-size: 24px
+
+		b
+			color: $accent
+			margin-right: 20px
+
+		a
+			display: block
+			width: 30px
+			height: 30px
+			margin-right: 20px
+
+			&:hover,
+			&:focus
+				transform: scale(.9)
+
+			&:last-child
+				margin-right: 0
+
+		img
+			width: 100%
+			height: 100%
+
+
+.services
+	padding: 80px 0
+
+	&__title
+		@extend .director__title
+		margin-bottom: 45px
+
+	&__list
+		+between
+		align-items: flex-start
+
+	&__item
+		display: block
+		width: 31%
+		color: $text
+		margin-bottom: 30px
+
+		&:hover
+			color: $text
+
+			.services__img::before, span
+				opacity: 1
+
+	&__img
+		position: relative
+		overflow: hidden
+		width: 100%
+		border-radius: 10px
+		margin-bottom: 10px
+
+		&::before
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background-color: rgba($accent, .7)
+			+transition
+			z-index: 1
+			opacity: 0
+
+		span
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			width: 80%
+			text-align: center
+			color: #ffffff
+			font-size: 36px
+			font-weight: 800
+			+transition
+			z-index: 1
+			opacity: 0
+
+		img
+			width: 100%
+			height: auto
+
+	&__subtitle
+		font-size: 24px
+		font-weight: 700
+		margin-bottom: 5px
+
+	&__text
+		font-size: 18px
+		font-weight: 300
 
 
 .footer
+	height: 500px
+
 	&__container
 		+between
 
