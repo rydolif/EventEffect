@@ -1,6 +1,6 @@
 
 //----------------------fonts---------------------
-$fonts: 'Roboto', sans-serif
+$fonts: 'Geometria', sans-serif
 //---------------------end-fonts---------------------
 
 //----------------------color---------------------
@@ -52,6 +52,7 @@ p
 a,
 button
 	transition: all .6s
+	border: none
 
 	&:focus,
 	&:hover,
@@ -63,12 +64,13 @@ button
 
 input, textarea, select
 	width: 100%
-	border: 1px solid #ebebeb
+	border: 1px solid transparent
+	background-color: #ffffff
 	outline: none
 	box-shadow: none
 	// -webkit-appearance: none
 	font-size: 16px
-	box-shadow: 0 0 6px rgba(42, 63, 125, 0.34)
+	border-radius: 4px
 	
 	&:focus:required:invalid
 		border-color: red
@@ -82,19 +84,17 @@ input, textarea, select
 		box-shadow: none
 		-webkit-appearance: none
 
-	&::placeholder
-		color: #c4c4c4
-		font-size: 12px
-		line-height: 50px
 
 input, select
-	height: 50px
-	line-height: 50px
+	height: 65px
+	line-height: 65px
 	padding: 0 25px
 
 	&::placeholder
-		line-height: 50px
+		line-height: 65px
 		font-size: 16px
+		color: #000000
+
 
 textarea
 	&::placeholder

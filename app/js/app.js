@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 	//----------------------SLIDER-hero----------------------
-		// var mySwiper = new Swiper('.hero__slider', {
-		// 	loop: true,
-		// 	pagination: {
-		// 		el: '.hero__pagination',
-		// 		clickable: 'true',
-		// 	},
-		// 	navigation: {
-		// 		nextEl: '.hero__next',
-		// 		prevEl: '.hero__prev',
-		// 	},
-		// });
+		var mySwiper = new Swiper('.partners__slider', {
+			slidesPerView: 6,
+			slidesPerColumn: 3,
+			// pagination: {
+			// 	el: '.hero__pagination',
+			// 	clickable: 'true',
+			// },
+			// navigation: {
+			// 	nextEl: '.hero__next',
+			// 	prevEl: '.hero__prev',
+			// },
+		});
 
 	
 	//----------------------MODAL-----------------------
