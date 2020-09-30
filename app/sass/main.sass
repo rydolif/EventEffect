@@ -1002,10 +1002,21 @@
 				color: $accent
 
 	&__messenger
-		@extend .footer__messenger
 
 		+r(992)
 			margin-bottom: 20px
+		
+		a
+			display: block
+			width: 105px
+
+			&:hover,
+			&:focus
+				transform: scale(.95)
+
+			img
+				width: 100%
+				height: auto
 
 	&__info
 		@extend .header__info
@@ -1060,7 +1071,7 @@
 	&__title
 		@extend .services__title
 		margin-bottom: 5px
-	
+
 	&__desc
 		font-size: 30px
 		font-weight: 500
