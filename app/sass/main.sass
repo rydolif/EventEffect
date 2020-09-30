@@ -42,6 +42,9 @@
 		height: 50px
 		font-size: 16px
 
+	+r(767)
+		padding: 0 20px
+
 	&:hover,
 	&:focus
 		border-bottom: 4px solid #ae132e
@@ -59,6 +62,7 @@
 	border: none
 	background-color: transparent
 	transition: all .3s
+	padding-top: 7px
 
 	+r(992)
 		display: block
@@ -118,6 +122,52 @@
 			&::after
 				transform: translate3d(0, 10px, 0) rotate(-45deg)
 
+// -----ANIMATION-----
+@keyframes parallax
+	0%
+		transform: translate(0, 0)
+		
+	100%
+		transform: translate(0, 100%)
+
+// -----PARALLAX-----
+.parallax
+	position: absolute
+	z-index: -1
+	animation: 20s linear 0s infinite alternate parallax
+
+	+r(1400)
+		display: none
+
+	&__arrow-left
+		bottom: 0
+		left: 0
+
+	&__arrow-right
+		right: 0
+		top: 0
+
+	&__border
+		top: 20%
+		right: -210px
+		width: 424px
+		height: 424px
+		border-radius: 50%
+		border: 80px solid $accent
+		box-shadow: 0 15px 25px 0 rgba($accent, .7)
+		animation: 26s linear 0s infinite alternate parallax
+
+	&__circle
+		top: 20%
+		left: -35px
+		width: 70px
+		height: 70px
+		border-radius: 50%
+		background-color: $accent
+		box-shadow: 0 15px 25px 0 rgba($accent, .7)
+		z-index: 1
+		animation: 6s linear 0s infinite alternate parallax
+
 
 .header
 	position: fixed
@@ -129,7 +179,11 @@
 	background-color: #ffffff
 	+transition
 
-	&--active
+	+r(767)
+		padding: 5px 0
+
+	&--active,
+	&__menu
 		box-shadow: 0 0 15px 0 rgba(#000, .3)
 		padding: 5px 0
 
@@ -170,6 +224,9 @@
 		display: flex
 		margin-right: 20px
 
+		+r(767)
+			display: none
+
 		a
 			display: block
 			width: 40px
@@ -187,25 +244,11 @@
 				width: 100%
 				height: 100%
 
-	&__nav
-
-		+r(992)
-			display: none
-		
-		ul
-			display: flex
-
-		li
-			margin-right: 30px
-
-		a
-			color: $text
-
-			&:hover,
-			&:focus
-				color: $accent
-
 	&__messenger
+
+		+r(767)
+			display: none
+
 		a
 			display: block
 			width: 105px
@@ -218,8 +261,18 @@
 				width: 100%
 				height: auto
 
+	&__wrap
+		display: flex
+		align-items: center
+
 	&__info
 		text-align: right
+
+		+r(992)
+			margin-right: 15px
+
+		+r(480)
+			display: none
 
 		&_clock
 			font-size: 12px
@@ -249,6 +302,116 @@
 				width: 13px
 				height: 11px
 				margin-right: 8px
+		
+		&_mobile
+			display: none
+
+			+r(767)
+				display: block
+				text-align: center
+
+	&__nav
+		+transition
+
+		+r(992)
+			position: fixed
+			top: 72px
+			right: -100%
+			bottom: 0
+			background-color: #ffffff
+			z-index: 1000
+			width: 100vw
+			height: 100vh
+			padding: 40px 0 50vh
+			overflow: auto
+
+		+r(480)
+			top: 55px
+
+		&--active
+			right: 0
+
+		ul
+			display: flex
+
+			+r(992)
+				flex-direction: column
+				align-items: center
+				font-size: 22px
+
+			li
+				margin-right: 30px
+				padding: 15px 0
+
+				&:last-child
+					margin-right: 0
+
+				+r(992)
+					margin-right: 0
+					margin-bottom: 25px
+
+			a
+				color: $text
+
+				&:hover,
+				&:focus
+					color: $accent
+
+			ul
+				display: none
+				position: absolute
+				left: 0
+				top: 100%
+				background-color: #ffffff
+				flex-direction: column
+				// align-items: flex-start
+				padding: 15px
+				width: 280px
+				box-shadow: 0 15px 12px 0 rgba(#000, .3)
+
+				+r(992)
+					left: 50%
+					transform: translate(-50%, 0)
+					text-align: center
+
+				li
+					padding: 0
+					margin-bottom: 7px
+					margin-right: 0
+
+					&:last-child
+						margin-bottom: 0
+
+				a
+					display: block
+					&:hover
+						padding-left: 5px
+
+		&_toggle
+			position: relative
+			padding-right: 22px !important
+
+			&:hover
+				color: $accent
+
+				ul
+					display: flex
+
+			&::after
+				content: '›'
+				position: absolute
+				right: 0
+				font-size: 22px
+				transform: rotate(90deg)
+
+		&_mobile
+			display: none
+
+			+r(767)
+				display: flex
+				justify-content: center
+				margin-right: 0
+				margin-bottom: 20px
 
 
 .sity
@@ -256,17 +419,33 @@
 	white-space: nowrap
 
 
+.main
+	overflow: hidden
+
+	+r(992)
+		padding-top: 72px
+
+	+r(576)
+		padding-top: 55px
+
+
 .hero
 	+cover
 	background-image: url(../img/dest/hero__bg.png)
+	background-attachment: fixed
 	position: relative
-	margin-top: 95px
 	padding-top: 120px
 	padding-bottom: 310px
+
+	+r(1200)
+		background-attachment: auto
 
 	+r(992)
 		text-align: center
 		padding: 100px 0
+
+	+r(576)
+		padding: 60px 0
 
 	&__arrow
 		position: absolute
@@ -318,6 +497,13 @@
 		
 		+r(992)
 			max-width: 100%
+		
+		+r(767)
+			font-size: 32px
+		
+		+r(480)
+			font-size: 26px
+			margin-bottom: 20px
 
 	&__subtitle
 		max-width: 59%
@@ -328,9 +514,15 @@
 
 		+r(1200)
 			max-width: 88%
-		
+
 		+r(992)
 			max-width: 100%
+
+		+r(767)
+			font-size: 24px
+
+		+r(480)
+			font-size: 20px
 
 	&__btn
 		@extend .btn
@@ -362,6 +554,7 @@
 		+r(992)
 			align-items: flex-start
 
+
 	&__item
 		width: 25%
 		text-align: center
@@ -369,10 +562,17 @@
 
 		+r(992)
 			width: 48%
-		
+
+		+r(480)
+			width: 100%
+			margin-bottom: 20px
+
 		&:first-child
 			+r(992)
 				margin-bottom: 25px
+
+		&:last-child
+			margin-bottom: 0
 
 	img
 		height: 85px
@@ -403,6 +603,10 @@
 
 		+r(992)
 			width: 72%
+		
+		+r(767)
+			width: 100%
+			margin-bottom: 15px
 
 	&__title
 		font-size: 48px
@@ -410,6 +614,10 @@
 
 		+r(1200)
 			font-size: 34px
+		
+		+r(767)
+			text-align: center
+			font-size: 28px
 
 		span
 			color: $accent
@@ -421,12 +629,24 @@
 		+r(1200)
 			line-height: 1.6
 			margin-bottom: 30px
+		
+		+r(480)
+			text-align: center
 
 	&__img
+		position: relative
 		width: 45%
+
+		.parallax__circle
+			left: 20px
 
 		+r(992)
 			width: 28%
+		
+		+r(767)
+			width: 100%
+			max-width: 380px
+			margin: 0 auto
 
 		img
 			width: 100%
@@ -437,6 +657,9 @@
 
 		+r(1200)
 			font-size: 18px
+
+		+r(480)
+			font-size: 14px
 
 		b
 			color: $accent
@@ -472,10 +695,16 @@
 
 		+r(1200)
 			margin-bottom: 30px
+		
+		+r(576)
+			text-align: center
 
 	&__list
 		+between
 		align-items: flex-start
+
+		+r(576)
+			justify-content: space-around
 
 	&__item
 		display: block
@@ -485,6 +714,13 @@
 
 		+r(992)
 			width: 48%
+		
+		+r(576)
+			width: 100%
+			max-width: 320px
+
+		+r(480)
+			text-align: center
 
 		&:hover
 			color: $text
@@ -525,6 +761,9 @@
 			+transition
 			z-index: 1
 			opacity: 0
+			
+			+r(767)
+				font-size: 24px
 
 		img
 			width: 100%
@@ -534,6 +773,9 @@
 		font-size: 24px
 		font-weight: 700
 		margin-bottom: 5px
+		
+		+r(576)
+			font-size: 20px
 
 	&__text
 		font-weight: 300
@@ -551,6 +793,9 @@
 	&__slider
 		height: 320px
 
+		+r(992)
+			padding-bottom: 25px
+
 	&__slide
 		text-align: center
 		background: #fff
@@ -559,6 +804,32 @@
 		justify-content: center
 		align-items: center
 
+		img
+			max-width: 90%
+
+	&__pagination
+		display: none
+		justify-content: center
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 10px
+
+		+r(1200)
+			display: flex
+
+		span
+			+transition
+			display: block
+			width: 10px
+			height: 10px
+			border-radius: 50%
+			background-color: #d5d3e8
+			margin: 0 5px
+		
+		.swiper-pagination-bullet-active
+			background-color: $accent
+
 
 .application
 	background-image: url(../img/dest/application__bg.jpg)
@@ -566,8 +837,10 @@
 	background-position: center bottom
 	padding-top: 70px
 	padding-bottom: 0
-	overflow: hidden
-	position: relative
+
+	+r(1200)
+		overflow: hidden
+		position: relative
 
 	+r(992)
 		+cover
@@ -590,6 +863,9 @@
 		
 		+r(992)
 			width: 90%
+		
+		+r(767)
+			width: 100%
 
 	&__title
 		@extend .director__title
@@ -605,6 +881,10 @@
 			font-size: 24px
 			margin-bottom: 25px
 
+		+r(480)
+			text-align: center
+			font-size: 20px
+
 	&__form
 		+between
 		align-items: flex-start
@@ -612,8 +892,19 @@
 	&__input
 		width: 48%
 
+		+r(576)
+			width: 100%
+			margin-bottom: 15px
+
 		&:nth-child(1)
 			margin-bottom: 25px
+
+			+r(576)
+				margin-bottom: 15px
+
+		&:last-child
+			+r(576)
+				margin-bottom: 0
 
 	&__btn
 		@extend .btn
@@ -636,12 +927,14 @@
 			width: .1px
 			z-index: 0
 
+		+r(767)
+			display: none
+
 		img
 			+r(992)
 				position: absolute
 				right: -50px
 				top: 0
-
 
 
 .footer
@@ -651,9 +944,15 @@
 	&__container
 		+between
 		margin-bottom: 20px
-	
+
+		+r(992)
+			flex-direction: column-reverse
+
 	&__logo
 		@extend .header__logo
+
+		+r(992)
+			margin-bottom: 15px
 
 		&:hover,
 		&:focus
@@ -662,14 +961,37 @@
 
 		p
 			color: #ffffff
+		
+		img
+			+r(992)
+				margin-right: 0
+
+	&__soc
+		@extend .header__soc
+
+		+r(992)
+			margin-right: 0
+			margin-bottom: 20px
+		
+		+r(767)
+			display: flex
 
 	&__nav
 		
+		+r(992)
+			text-align: center
+			margin-right: 0
+			margin-bottom: 20px
+			order: 1
+
 		ul
 			display: flex
 
 		li
 			margin-right: 30px
+
+			&:last-child
+				margin-right: 0
 
 		a
 			color: #fff
@@ -678,9 +1000,24 @@
 			&:focus
 				color: $accent
 
+	&__messenger
+		@extend .footer__messenger
+
+		+r(992)
+			margin-bottom: 20px
+
 	&__info
 		@extend .header__info
 		color: #ffffff
+
+		+r(992)
+			text-align: center
+			margin-bottom: 20px
+			margin-right: 0
+
+		+r(576)
+			display: flex
+			flex-direction: column
 
 		&_clock
 			@extend .header__info_clock
@@ -700,6 +1037,13 @@
 		+between
 		color: rgba(#fff, .3)
 
+		+r(992)
+			flex-direction: column-reverse
+
+		p
+			+r(992)
+				margin-bottom: 15px
+
 		a
 			color: #ffffff
 
@@ -710,27 +1054,26 @@
 
 // -----MODAL-----
 .modal
-	position: relative
-	max-width: 725px
-	width: 100%
-	height: auto
-	padding: 60px 75px 145px
-	margin: 20px 0
-	background-color: #fff
-	z-index: 1
-	box-shadow: 0 0 16px rgba(0, 0, 0, 0.29)
-	border-radius: 20px
-	border: 2px solid #273a72
 	display: none
+	justify-content: center
+	align-items: center
+	position: fixed
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	width: 110vw
+	height: 110vh
+	padding: 30px
+	z-index: 10000
+	background-color: rgba(#000, .5)
 
-	h3
-		justify-content: flex-start
-		margin-bottom: 50px
+	&--open
+		position: relative
 
 	&__close
 		position: absolute
-		right: 15px
-		top: 15px
+		right: -35px
+		top: -35px
 		display: block
 		width: 40px
 		height: 40px
@@ -739,6 +1082,13 @@
 		cursor: pointer
 		transition: all .6s
 		background-color: #fff
+
+		+r(576)
+			width: 30px
+			height: 30px
+			top: -15px
+			right: -15px
+			box-shadow: 0 0 15px 0 rgba(#000, .7)
 
 		&:hover,
 		&:focus
@@ -764,3 +1114,41 @@
 
 			&:last-child
 				transform: translate(-50%, -50%) rotate(-45deg)
+
+	&__form
+		position: relative
+		margin: 20px 0
+		z-index: 1
+		box-shadow: 0 0 16px rgba(0, 0, 0, 0.29)
+		border-radius: 20px
+		background-color: #f8f7f7
+		width: 440px
+		text-align: center
+		padding: 30px
+
+	&__title
+		margin-bottom: 20px
+
+	&__line
+		position: relative
+		display: flex
+		justify-content: center
+		align-items: center
+		margin-bottom: 20px
+
+		&:last-child
+			margin-bottom: 0
+		
+	input
+		box-shadow: 0 0 5px 0 rgba(#000, .2)
+
+	&__btn
+		@extend .btn
+		width: 100%
+		min-width: 100%
+
+		&:hover
+			box-shadow: 0 0 13px 0 rgba($accent, .6)
+
+		&:focus
+			box-shadow: 0 0 5px 0 rgba($accent, .4)

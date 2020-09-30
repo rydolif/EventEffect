@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			slidesPerView: 2,
 			slidesPerColumn: 3,
 			pagination: {
-				el: '.hero__pagination',
+				el: '.partners__pagination',
 				clickable: 'true',
 			},
 			breakpoints: {
@@ -67,12 +67,12 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 	
 		};
-		// modals('.order__open', '.modal--order', '.modal--order .modal__close');
+		modals('.order__open', '.modal--order', '.modal--order .modal__close');
 
 	//----------------------SCROLL-----------------------
 		const scrollTo = (scrollTo) => {
 			let list = document.querySelector(scrollTo);
-			list = '.' + list.classList[0]  + ' li a[href^="#"';
+			list = '.' + list.classList[0]  + ' a[href^="#"';
 	
 			document.querySelectorAll(list).forEach(link => {
 	
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				});
 			});
 		};
-		// scrollTo('.header__nav');
+		scrollTo('.hero__arrow');
 	
 	//----------------------FIXED-HEADER-----------------------
 		const headerFixed = (headerFixed, headerActive) => {
@@ -139,8 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 	
 		};
-		// hamburger('.hamburger', '.header__nav', '.header');
-	
-	
-	});
+		hamburger('.hamburger', '.header__nav', '.header');
+
+});
 	
