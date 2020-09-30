@@ -500,7 +500,7 @@
 	<div class="modal modal--order">
 		<form action="sendmail.php" class="modal__form form" method="post">
 
-			<button class="close modal__close" type="button">
+			<button class="modal__close" type="button">
 				<span></span>
 				<span></span>
 			</button>
@@ -521,12 +521,22 @@
 	</div>
 
 	<div class="modal modal--thanks">
-		<button class="close thanks_close" type="button">
-			<span></span>
-			<span></span>
-		</button>
-		<h3>Спасибо за доверие!</h3>
-		<p>Мы обязательно с вами свяжемся!</p>
+		<div class="modal__form">
+			<button class="modal__close thanks_close" type="button">
+				<span></span>
+				<span></span>
+			</button>
+			<h2 class="modal__title">Спасибо за Вашу заявку</h2>
+			<p class="modal__subtitle">Менеджер свяжется с вами в ближайшее время</p>
+			<div class="modal__soc">
+				<p class="modal__subtitle">Следите за новостями </p>
+				<div class="footer__soc header__soc">
+					<a href="#" target="_blank"><img src="img/dest/instagram.svg" alt=""></a>
+					<a href="#" target="_blank"><img src="img/dest/vk.svg" alt=""></a>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<script src="js/app.min.js"></script>

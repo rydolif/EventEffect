@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	//----------------------SCROLL-----------------------
 		const scrollTo = (scrollTo) => {
 			let list = document.querySelector(scrollTo);
-			list = '.' + list.classList[0]  + ' a[href^="#"';
-	
-			document.querySelectorAll(list).forEach(link => {
-	
-				link.addEventListener('click', function(e) {
+			
+			if (list) {
+				list = '.' + list.classList[0]  + ' a[href^="#"';
+				document.querySelectorAll(list).forEach(link => {
+					link.addEventListener('click', function(e) {
 						e.preventDefault();
 						const scrollMenu = document.querySelector(scrollTo);
 	
@@ -102,8 +102,10 @@ document.addEventListener("DOMContentLoaded", function() {
 						button.classList.remove('hamburger--active');
 						nav.classList.remove('header__nav--active');
 						header.classList.remove('header--menu');
+					});
 				});
-			});
+			}
+
 		};
 		scrollTo('.hero__arrow');
 	
