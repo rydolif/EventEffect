@@ -1311,6 +1311,162 @@
 			+transition
 
 
+.article
+	padding: 90px 0
+	box-shadow: inset 0 15px 25px 0 rgba(#000, .1)
+
+	+r(992)
+		padding: 40px 0
+
+	&__content
+		margin-bottom: 60px
+	
+	&__title
+		font-size: 48px
+		margin-bottom: 10px
+
+		+r(1200)
+			font-size: 34px
+		
+		+r(767)
+			font-size: 28px
+			text-align: center
+
+		span
+			color: $accent
+	
+	&__subtitle
+		font-size: 48px
+		margin-bottom: 50px
+
+		+r(1200)
+			font-size: 34px
+		
+		+r(767)
+			text-align: center
+			font-size: 28px
+			margin-bottom: 25px
+
+		span
+			color: $accent
+		
+	&__img
+		float: left
+		margin-right: 40px
+		margin-bottom: 40px
+		width: 40%
+
+		+r(1200)
+			margin-right: 20px
+			margin-bottom: 20px
+		
+		+r(767)
+			float: none
+			margin-right: 0
+			width: 100%
+			max-width: 320px
+			margin: 0 auto 20px
+
+		img
+			width: 100%
+			height: auto
+	
+	&__text
+		font-size: 24px
+		line-height: 1.2
+
+		+r(1200)
+			font-size: 18px
+
+	&__date
+		margin-top: 10px
+		color: $accent
+		text-align: right
+
+	&__btn
+		display: flex
+		justify-content: center
+
+		a
+			@extend .btn
+
+			&:hover,
+			&:focus
+				box-shadow: 0 0 15px 0 rgba($accent, .7)
+
+
+.slider-services
+	+pseudo
+	margin-bottom: 80px
+	overflow: visible
+
+	+r(992)
+		margin-bottom: 40px
+
+	&::before,
+	&::after
+		background-color: rgba(#fff, .7)
+		width: 1000%
+		height: 100%
+		z-index: 2
+
+	&::before
+		left: auto
+		right: 100%
+	
+	&::after
+		left: 100%
+
+	img
+		width: 100%
+		border-radius: 10px
+	
+	&__next,
+	&__prev
+		position: absolute
+		top: 50%
+		width: 50px
+		height: 50px
+		border-radius: 50%
+		background-color: $accent
+		z-index: 3
+		+transition
+
+		&:hover,
+		&:focus
+			box-shadow: 0 0 15px 0 rgba($accent, .7)
+
+			&::before
+				transform: translate(-30%, -50%) rotate(-45deg) scale(.9)
+
+		&::before
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-30%, -50%) rotate(-45deg)
+			display: block
+			width: 15px
+			height: 15px
+			border-top: 2px solid #ffffff
+			border-left: 2px solid #ffffff
+			+transition
+
+	&__prev
+		left: 0
+		transform: translate(-50%, -50%)
+
+		+r(576)
+			transform: translate(-10px, -50%)
+
+	&__next
+		right: 0
+		transform: translate(50%, -50%) rotate(180deg)
+
+		+r(576)
+			transform: translate(10px, -50%) rotate(180deg)
+
+
 // -----MODAL-----
 .modal
 	display: none

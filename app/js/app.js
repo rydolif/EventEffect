@@ -37,6 +37,29 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		});
 
+	//----------------------SLIDER-hero----------------------
+		var mySwiper = new Swiper('.slider-services', {
+			slidesPerView: 1,
+			spaceBetween: 30,
+			loop: true,
+      navigation: {
+        nextEl: '.slider-services__next',
+        prevEl: '.slider-services__prev',
+      },
+			breakpoints: {
+				// when window width is >= 480px
+				576: {
+					slidesPerView: 2,
+					spaceBetween: 30,
+				},
+				// when window width is >= 640px
+				1200: {
+					slidesPerView: 3,
+					spaceBetween: 65,
+				}
+			}
+		});
+
 	
 	//----------------------MODAL-----------------------
 		const modals = (triggerSelector, modalSelector, closeSelector) => {
