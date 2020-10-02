@@ -1,3 +1,5 @@
+'use strict'
+
 document.addEventListener("DOMContentLoaded", function() {
 
 	//----------------------SLIDER-hero----------------------
@@ -101,27 +103,21 @@ document.addEventListener("DOMContentLoaded", function() {
 				document.querySelectorAll(list).forEach(link => {
 					link.addEventListener('click', function(e) {
 						e.preventDefault();
-						const scrollMenu = document.querySelector(scrollTo);
-	
-						let href = this.getAttribute('href').substring(1);
-	
+
+						const href = this.getAttribute('href').substring(1);
 						const scrollTarget = document.getElementById(href);
-	
-						// const topOffset = scrollMenu.offsetHeight;
 						const topOffset = 70;
 						const elementPosition = scrollTarget.getBoundingClientRect().top;
 						const offsetPosition = elementPosition - topOffset;
-	
+						const button = document.querySelector('.hamburger'),
+									nav = document.querySelector('.header__nav'),
+									header = document.querySelector('.header');
+
 						window.scrollBy({
 								top: offsetPosition,
 								behavior: 'smooth'
 						});
-	
-						
-						let button = document.querySelector('.hamburger'),
-								nav = document.querySelector('.header__nav'),
-								header = document.querySelector('.header');
-	
+
 						button.classList.remove('hamburger--active');
 						nav.classList.remove('header__nav--active');
 						header.classList.remove('header--menu');

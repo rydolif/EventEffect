@@ -4,7 +4,7 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>Contacts</title>
+	<title>Services</title>
 	<meta name="description" content="Startup HTML Optimized">
 	<meta name="viewport" content="width=device-width">
 	<link rel="icon" href="img/favicon.ico">
@@ -100,33 +100,68 @@
 
 	<main class="main">
 
-		<div class="contacts">
+		<section class="hero">
 			<div class="container">
-
-				<h2 class="contacts__title">Контакты</h2>
-
-				<div class="contacts__wrap">
-					<div class="contacts__info">
-						<div class="contacts__info_block">
-							<img src="img/contacts__tel.png" alt="">
-							<p><b>Телефон:</b></p>
-							<p>8 962 213 22 22</p>
-							<p><a href="tel:89622132222">Позвонить нам</a></p>
-						</div>
-						<div class="contacts__info_block">
-							<img src="img/contacts__mail.png" alt="">
-							<p><b>Почта:</b></p>
-							<p>info@event-effect.ru</p>
-							<p><a href="mailto:info@event-effect.ru">Написать нам</a></p>
-						</div>
+	
+				<div class="hero__arrow">
+					<a href="#director"><img src="img/arrow.svg" alt=""></a>
+				</div>
+	
+				<h1 class="hero__title">
+					Интерактивные развлечения <br>для Вашего меропртиятия по привлекательным ценам 
+					<span class="sity">в Москве</span>
+				</h1>
+	
+				<p class="hero__subtitle">Получите скидку на наши услуги, ответив на 4 вопроса </p>
+				<a href="#" class="hero__btn order__open">Получить скидку</a>
+				
+			</div>
+		</section>
+	
+		<section class="info">
+			<div class="info__container container">
+				<div class="info__list">
+	
+					<div class="info__item">
+						<img src="img/info__icon4.svg" alt="">
+						<p>Полная готовность <br>интерактива по таймингу <br>- гарантия по договору </p>
 					</div>
-					<div class="contacts__soc">
-						<a href="#" target="_blank">
-							<img src="img/telegram.svg" alt="">
-						</a>
-						<a href="#" target="_blank">
-							<img src="img/whatsapp.svg" alt="">
-						</a>
+	
+					<div class="info__item">
+						<img src="img/info__icon3.svg" alt="">
+						<p>Уже более 7 лет <br>дерим позитивные <br>эмоции</p>
+					</div>
+	
+					<div class="info__item">
+						<img src="img/info__icon2.svg" alt="">
+						<p>Свыше 1 000 <br>мероприятий <br>за все время работы</p>
+					</div>
+	
+					<div class="info__item">
+						<img src="img/info__icon1.svg" alt="">
+						<p>Более 500 000 часов <br>безупречной работы <br>устройств</p>
+					</div>
+	
+				</div>
+			</div>
+		</section>
+	
+		<section class="director" id="director">
+			<div class="director__container container">
+	
+				<div class="director__description">
+					<h2 class="director__title">Здравствуйте,<br> Меня зовут <span>Виктор Чернышев</span></h2>
+					<p class="director__text">
+						Я основал event-effect.ru в 2014 году. Парк наших устройств увеличивался с 
+						каждым годом, и, безусловно, это не предел! Сейчас мы можем предложить различные 
+						интерактивы и активности для того, чтобы Ваше мероприятие было веселым, ярким и 
+						незабываемым! Мне и моей команде нравится дарить людям позитивные эмоции, и мы 
+						рады Вам показать каждый шаг, который делается у нас в компании.  Буквально, как 
+						компания дышит.  Об этом Вы можете прочесть в моих социальных сетях.
+						Будем рады помочь в организации мероприятий любого формата и масштаба.
+					</p>
+					<div class="director__soc">
+						<b>Подписывайтесь на мои социальные сети:</b>
 						<a href="#" target="_blank">
 							<img src="img/instagram.svg" alt="">
 						</a>
@@ -135,14 +170,19 @@
 						</a>
 					</div>
 				</div>
-
+	
+				<div class="director__img">
+					<div class="parallax parallax__circle"></div>
+					<img src="img/director__img.png" alt="">
+				</div>
+	
 			</div>
-		</div>
+		</section>
 
-		<section class="application--contacts application">
+		<section class="application">
 			<div class="application__container container">
 				
-				<div class="application--contacts__content application__content">
+				<div class="application__content">
 					<h2 class="application__title"><span>Оставьте заявку</span></h2>
 					<div class="application__subtitle">
 						наш менеджер свяжется с вами и предложит
@@ -150,21 +190,25 @@
 					</div>
 	
 					<form class="application__form">
-						<div class="application--contacts__input application__input">
+						<div class="application__input">
 							<input type="text" name="name" placeholder="Имя" required>
 						</div>
-						<div class="application--contacts__input application__input">
+						<div class="application__input">
 							<input type="tel" name="phone" placeholder="Телефон" required>
 						</div>
-						<div class="application--contacts__input application__input">
+						<div class="application__input">
 							<input type="mail" name="mail" placeholder="E-mail" required>
 						</div>
-						<div class="application--contacts__input application__input">
+						<div class="application__input">
 							<button class="application__btn">ОТПРАВИТЬ ЗАЯВКУ</button>
 						</div>
 					</form>
 				</div>
-
+	
+				<div class="application__img">
+					<img src="img/application__img.png" alt="">
+				</div>
+	
 			</div>
 		</section>
 
