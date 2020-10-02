@@ -142,10 +142,12 @@
 	&__arrow-left
 		bottom: 0
 		left: 0
+		width: 130px
 
 	&__arrow-right
 		right: 0
 		top: 0
+		width: 130px
 
 	&__border
 		top: 20%
@@ -278,7 +280,7 @@
 			font-size: 12px
 
 		&_tel
-			font-size: 30px
+			font-size: 26px
 			font-weight: 700
 			color: $accent
 			line-height: 1
@@ -421,7 +423,7 @@
 
 .main
 	overflow: hidden
-	padding-top: 89px
+	padding-top: 85px
 
 	+r(992)
 		padding-top: 72px
@@ -436,6 +438,9 @@
 	position: relative
 	padding: 180px 0
 	height: 80%
+
+	+r(1500)
+		padding: 150px 0
 
 	+r(1200)
 		background-attachment: auto
@@ -486,7 +491,7 @@
 			opacity: 0.5
 
 	&__title
-		max-width: 63%
+		max-width: 70%
 		width: 100%
 		font-size: 48px
 		color: #ffffff
@@ -599,6 +604,7 @@
 .director
 	background-repeat: repeat-x
 	background-image: url(../img/director__bg.jpg)
+	background-size: contain
 	padding: 100px 0
 
 	+r(1200)
