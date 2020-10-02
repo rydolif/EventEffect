@@ -55,6 +55,23 @@
 	&:focus
 		box-shadow: 0 0 15px 0 rgba(#fff, .3)
 
+	&--play
+		background-color: $accent
+		height: 80px
+		padding: 0 25px
+
+		+r(992)
+			height: 60px
+
+		&:hover
+			box-shadow: 0 0 15px 0 rgba($accent, .7)
+
+		&:focus
+			box-shadow: 0 0 15px 0 rgba($accent, .5)
+
+		span
+			margin-right: 25px
+
 // -----HAMBURGER-----
 .hamburger
 	display: none
@@ -557,12 +574,20 @@
 
 		+r(992)
 			align-items: flex-start
+			padding: 20px
 
 	&__item
 		position: relative
 		width: 25%
 		text-align: center
 		line-height: 1.3
+
+		+r(992)
+			width: 50%
+
+		+r(480)
+			width: 100%
+			margin-bottom: 20px
 
 		&::before
 			content: ''
@@ -574,17 +599,17 @@
 			width: 2px
 			background-color: #fde9ed
 
+			+r(480)
+				display: none
+
 		&:last-child
 			&::before
 				display: none
 
-		+r(992)
-			width: 48%
-
-		+r(480)
-			width: 100%
-			margin-bottom: 20px
-
+		&:nth-child(2)
+			+r(992)
+				&::before
+					display: none
 		&:first-child
 			+r(992)
 				margin-bottom: 25px
@@ -613,6 +638,9 @@
 
 	+r(992)
 		padding: 40px 0
+
+	&--no-bg
+		background-image: none
 
 	&__container
 		+between
@@ -1484,6 +1512,499 @@
 
 		+r(576)
 			transform: translate(10px, -50%) rotate(180deg)
+
+
+//------SERVICES---------
+.description
+	padding: 100px 0 150px
+	border-bottom-right-radius: 50%
+	border-bottom-left-radius: 50%
+	box-shadow: inset 0 -15px 15px 0 rgba(#000, .1)
+
+	+r(1200)
+		border-bottom-right-radius: 30%
+		border-bottom-left-radius: 30%
+		padding: 80px 0
+
+	&__container
+		+between
+		align-items: flex-start
+
+	&__img
+		width: 48%
+
+		+r(767)
+			width: 100%
+			margin-bottom: 20px
+
+		img
+			width: 100%
+
+	&__content
+		width: 48%
+
+		+r(767)
+			width: 100%
+
+		&_text
+			font-size: 20px
+			font-weight: 700
+			margin-bottom: 50px
+
+			+r(1200)
+				font-size: 16px
+			
+			+r(992)
+				font-size: 14px
+				margin-bottom: 30px
+
+	.btn
+		margin: 0 auto
+
+
+.work
+	padding: 100px 0
+
+	+r(992)
+		padding: 60px 0
+	
+	+r(767)
+		padding: 40px 0
+
+	&__title
+		@extend .director__title
+		margin-bottom: 40px
+
+	&__list
+		+between
+		align-items: flex-start
+
+		+r(767)
+			justify-content: space-around
+	
+	&__item
+		display: flex
+		width: 32%
+
+		+r(992)
+			flex-wrap: wrap
+			text-align: center
+		
+		+r(767)
+			width: 48%
+			margin-bottom: 15px
+		
+		+r(480)
+			width: 100%
+
+		&:last-child
+			+r(480)
+				margin-bottom: 0
+
+	&__img
+		position: relative
+		width: 30%
+		margin-right: 20px
+		flex-shrink: 0
+
+		+r(1200)
+			margin-right: 5px
+
+		+r(992)
+			width: 70%
+			margin: 0 auto 10px
+
+		img
+			width: 100%
+			max-width: 160px
+
+			+r(1200)
+				width: 80%
+
+			+r(992)
+				width: 50%
+
+		span
+			position: absolute
+			top: 7px
+			left: 7px
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 35px
+			height: 35px
+			border-radius: 50%
+			background-color: #ffffff
+			box-shadow: 0 0 10px 0 rgba(#000, .2)
+			font-size: 20px
+			color: $accent
+			font-weight: 800
+
+			+r(1200)
+				width: 25px
+				height: 25px
+				font-size: 16px
+				top: 5px
+				left: 5px
+			
+			+r(992)
+				left: 23%
+			
+			+r(480)
+				width: 30px
+				height: 30px
+
+	p
+		margin-bottom: 15px
+		font-size: 14px
+
+		+r(1200)
+			margin-bottom: 5px
+
+		&:last-child
+			margin-bottom: 0
+
+	b
+		font-size: 20px
+
+		+r(1200)
+			font-size: 16px
+
+
+.interactive
+	padding-bottom: 75px
+	box-shadow: inset 0 -15px 15px 0 rgba(#000, .1)
+
+	+r(1200)
+		padding-bottom: 40px
+
+	&__title
+		@extend .director__title
+		margin-bottom: 25px
+
+	&__list
+		+between
+		align-items: flex-start
+
+		+r(767)
+			justify-content: space-around
+
+	&__item
+		width: 31%
+
+		+r(767)
+			width: 48%
+			margin-bottom: 25px
+		
+		+r(576)
+			width: 100%
+
+	&__img
+		width: 100%
+		margin-bottom: 30px
+
+		+r(1200)
+			margin-bottom: 15px
+	
+	&__subtitle
+		font-size: 28px
+		margin-bottom: 20px
+
+		+r(1200)
+			margin-bottom: 15px
+			font-size: 22px
+		
+		+r(767)
+			font-size: 20px
+
+	ul
+		margin-bottom: 25px
+
+		+r(1200)
+			margin-bottom: 10px
+
+		&:last-child
+			margin-bottom: 0
+
+	li
+		
+		&::before
+			content: ''
+			display: block
+			width: 4px
+			height: 4px
+			border-radius: 50%
+			background-color: $text
+			float: left
+			margin-right: 20px
+			margin-top: 11px
+
+			+r(1200)
+				margin-right: 10px
+				margin-top: 8px
+
+
+.included
+	padding: 70px 0
+
+	img
+		height: 70px
+		margin-bottom: 25px
+
+		+r(576)
+			margin-bottom: 10px
+
+	&__title
+		@extend .director__title
+		margin-bottom: 25px
+
+	&__list
+		+between
+		align-items: flex-start
+
+		+r(767)
+			justify-content: space-around
+
+	&__item
+		width: 22%
+
+		+r(767)
+			width: 48%
+			margin-bottom: 25px
+		
+		+r(576)
+			width: 100%
+			text-align: center
+
+		&:last-child
+			+r(767)
+				margin-bottom: 0
+
+	&__subtitle
+		font-size: 20px
+		margin-bottom: 10px
+
+
+.additional
+	padding-bottom: 40px
+
+	img
+		width: 100%
+		border-radius: 10px
+		box-shadow: 0 0 10px 0 rgba(#000, .4)
+		margin-bottom: 15px
+
+		+r(576)
+			max-width: 320px
+			margin-bottom: 10px
+
+	&__title
+		@extend .director__title
+		margin-bottom: 15px
+
+	&__subtitle
+		font-weight: 500
+		font-size: 26px
+		margin-bottom: 50px
+
+		+r(1200)
+			font-size: 20px
+
+		+r(767)
+			font-size: 18px
+			text-align: center
+			margin-bottom: 25px
+
+	&__list
+		+between
+		align-items: flex-start
+
+		+r(767)
+			justify-content: space-around
+
+	&__item
+		width: 22%
+
+		+r(767)
+			width: 48%
+			margin-bottom: 25px
+		
+		+r(576)
+			width: 100%
+			text-align: center
+
+
+.wrapp-button
+	padding: 70px 0
+	background-image: url(../img/wrapp-button__bg.png)
+	background-size: contain
+	background-repeat: no-repeat
+	background-color: $accent
+	background-position: 100px center
+
+	+r(2000)
+		background-position: 0 center
+
+	+r(576)
+		+cover
+
+	&__container
+		display: flex
+		justify-content: center
+		align-items: center
+
+	&__btn
+		@extend .btn
+		background-color: #ffffff
+		color: $accent
+		border-bottom: 1px solid #000
+		border-bottom: 4px solid #fafafa
+
+		&:hover,
+		&:focus
+			border-bottom: 4px solid #fafafa
+			background-color: #ffffff
+			color: $accent
+
+		&:hover
+			box-shadow: 0 0 15px 0 rgba(#fff, .7)
+
+		&:focus
+			box-shadow: 0 0 15px 0 rgba(#fff, .5)
+
+
+.question
+	padding-bottom: 80px
+
+	+r(1200)
+		padding-bottom: 40px
+
+	&__title
+		@extend .director__title
+
+	&__block
+		margin-bottom: 30px
+		line-height: 1.6
+
+		+r(992)
+			margin-bottom: 20px
+
+		&:last-child
+			margin-bottom: 0
+
+	&__header
+		position: relative
+		padding: 25px 55px 25px 35px
+		background-color: #ffffff
+		box-shadow: 0 0 15px 0 rgba($text, .2)
+		border-radius: 5px
+		cursor: pointer
+		+transition
+
+		+r(992)
+			padding: 15px 35px 15px 15px
+
+		span
+			position: absolute
+			top: 50%
+			right: 35px
+			transform: translate(0, -50%) rotate(-135deg)
+			display: block
+			width: 15px
+			height: 15px
+			border-top: 2px solid $accent
+			border-left: 2px solid $accent
+			+transition
+
+			+r(992)
+				width: 10px
+				height: 10px
+
+	&__content
+		padding-top: 25px
+
+		+r(992)
+			padding-top: 15px
+
+	.active
+		.question__header
+			background-color: $accent
+			color: #ffffff
+
+			span
+				transform: translate(0, -50%) rotate(45deg)
+				border-color: #fff
+
+
+.popular
+	padding-bottom: 40px
+
+	&__title
+		@extend .director__title
+		margin-bottom: 30px
+
+	&__list
+		+between
+		align-items: flex-start
+
+	&__item
+		position: relative
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 24%
+		max-height: 260px
+		overflow: hidden
+		border-radius: 10px
+		box-shadow: 0 0 15px 0 rgba($text, .2)
+
+		+r(992)
+			width: 48%
+			margin-bottom: 25px
+
+		+r(480)
+			width: 100%
+			max-width: 320px
+			margin: 0 auto 15px
+
+		&::before
+			content: ''
+			position: absolute
+			top: 0
+			right: 0
+			left: 0
+			bottom: 0
+			background-color: rgba($accent, .6)
+			z-index: 2
+
+
+		&:last-child
+			margin-bottom: 0
+
+		span
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			display: block
+			width: 90%
+			text-align: center
+			font-size: 28px
+			font-weight: 700
+			color: #ffffff
+			z-index: 3
+
+			+r(1200)
+				font-size: 22px
+
+			+r(992)
+				font-size: 26px
+
+			+r(576)
+				font-size: 22px
+
+		img
+			width: 100%
 
 
 // -----MODAL-----
