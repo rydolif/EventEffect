@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				// when window width is >= 640px
 				1200: {
 					slidesPerView: 3,
-					spaceBetween: 65,
+					spaceBetween: 30,
 				}
 			}
 		});
