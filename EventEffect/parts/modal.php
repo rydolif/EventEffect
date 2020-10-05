@@ -1,86 +1,42 @@
 
-<div class="modal" id="message">
-	<button class="modal__close message_close" type="button">
-		<span></span>
-		<span></span>
-	</button>
+	<div class="modal modal--order">
+		<form action="sendmail.php" class="modal__form form" method="post">
 
-	<div class="form">
+			<button class="modal__close" type="button">
+				<span></span>
+				<span></span>
+			</button>
 
-		<h3>Свяжитесь с нами</h3>
-		<p>
-			мы свяжемся с вами в ближайшее время
-		</p>
+			<h2 class="modal__title">Получить скидку</h2>
+			<input type="hidden" name="subject" value="Оставьте заявку на услугу">
 
-		<?php echo do_shortcode( '[caldera_form id="CF5ec2b70799f20"]' ); ?>
-
-	</div>
-</div>
-
-<div class="modal" id="order">
-	<button class="modal__close order_close" type="button">
-		<span></span>
-		<span></span>
-	</button>
-
-	<div class="form">
-
-		<h3>отправить запрос <br>на поиск номерного знака</h3>
-		<p>
-			и мы свяжемся с вами в ближайшее время
-		</p>
-
-		<?php echo do_shortcode( '[caldera_form id="CF5ec2aeb9ce7c1"]' ); ?>
-
-	</div>
-</div>
-
-<div class="modal modal--catalog" id="catalog">
-	<button class="modal__close catalog_close" type="button">
-		<span></span>
-		<span></span>
-	</button>
-
-	<div class="modal--catalog__wrap">
-		<ul>
-			<?php
-				$args = array(
-				'post_type' => 'nomer',
-				'posts_per_page' => -1,
-				);
-					$query = new WP_Query( $args );
-					while ( $query->have_posts() ): $query->the_post();
-			?>
-				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-			<?php
-				endwhile; wp_reset_postdata();
-			?>
-		</ul>
-	</div>
-</div>
-
-
-<div class="modal" id="buy">
-	<button class="modal__close buy_close" type="button">
-		<span></span>
-		<span></span>
-	</button>
-
-	<h3>Свяжитесь с нами <br> через соц. сети</h3>
-
-	<div class="modal__soc header__soc">
-		<a href="<?php the_field('vk', 'option'); ?>" target="_blank" class="header__soc_link header__soc_vk">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/svg/vk.svg" alt="">
-		</a>
-		<a href="<?php the_field('telegram', 'option'); ?>" target="_blank" class="header__soc_link header__soc_telegram">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/svg/telegram.svg" alt="">
-		</a>
-		<a href="<?php the_field('viber', 'option'); ?>" target="_blank" class="header__soc_link header__soc_viber">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/svg/viber.svg" alt="">
-		</a>
-		<a href="<?php the_field('whatsapp', 'option'); ?>" target="_blank" class="header__soc_link header__soc_whatsapp">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/svg/whatsapp.svg" alt="">
-		</a>
+			<div class="modal__line">
+				<input type="text" name="name" placeholder="Имя" class="modal__input" required>
+			</div>
+			<div class="modal__line">
+				<input type="tel" name="phone" placeholder="Телефон" class="modal__input" required>
+			</div>
+			<div class="modal__line">
+				<button type="submit" class="modal__btn" name="submit">Отправить</button>
+			</div>
+		</form>
 	</div>
 
-</div>
+	<div class="modal modal--thanks">
+		<div class="modal__form">
+			<button class="modal__close thanks_close" type="button">
+				<span></span>
+				<span></span>
+			</button>
+			<h2 class="modal__title">Спасибо за Вашу заявку</h2>
+			<p class="modal__subtitle">Менеджер свяжется с вами в ближайшее время</p>
+			<div class="modal__soc">
+				<p class="modal__subtitle">Следите за новостями </p>
+				<div class="footer__soc header__soc">
+					<a href="#" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/instagram.svg" alt=""></a>
+					<a href="#" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/vk.svg" alt=""></a>
+				</div>
+			</div>
+		</div>
+
+	</div>
