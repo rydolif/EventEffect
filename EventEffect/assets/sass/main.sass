@@ -380,7 +380,6 @@
 				top: 100%
 				background-color: #ffffff
 				flex-direction: column
-				// align-items: flex-start
 				padding: 15px
 				width: 280px
 				box-shadow: 0 15px 12px 0 rgba(#000, .3)
@@ -510,7 +509,7 @@
 			opacity: 0.5
 
 	&__title
-		max-width: 70%
+		max-width: 73%
 		width: 100%
 		font-size: 48px
 		color: #ffffff
@@ -530,7 +529,7 @@
 			margin-bottom: 20px
 
 	&__subtitle
-		max-width: 59%
+		max-width: 73%
 		width: 100%
 		font-size: 26px
 		color: #ffffff
@@ -651,7 +650,7 @@
 		+between
 
 	&__description
-		width: 55%
+		width: 56%
 
 		+r(992)
 			width: 72%
@@ -687,7 +686,7 @@
 
 	&__img
 		position: relative
-		width: 45%
+		width: 44%
 
 		.parallax__circle
 			left: 20px
@@ -963,12 +962,18 @@
 		@extend .btn
 		max-width: 100%
 		width: 100%
+		+transition
 
 		&:hover
 			box-shadow: 0 0 25px 0 rgba($accent, .7)
 
 		&:focus
 			box-shadow: 0 0 25px 0 rgba($accent, .3)
+
+		input
+			background-color: transparent !important
+			color: #ffffff !important
+			font-weight: 700 !important
 
 	&__img
 		width: 26%
@@ -1240,12 +1245,26 @@
 				color: $accent
 
 	&__btn
-		display: flex
-		justify-content: center
+		width: 100%
+
+		.pagination
+			display: flex
+			justify-content: center
+			width: 100%
+
+		a, span
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 32px
+			height: 32px
+			border-radius: 50%
+			background-color: $accent
+			color: #ffffff
+			margin: 0 4px
+			line-height: 1
 
 		a
-			@extend .btn
-
 			&:hover,
 			&:focus
 				box-shadow: 0 0 15px 0 rgba($accent, .7)
@@ -1363,6 +1382,9 @@
 		padding: 40px 0
 
 	&__content
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
 		margin-bottom: 50px
 
 	&__title
@@ -1375,7 +1397,6 @@
 		@extend .director__title
 
 	&__img
-		float: left
 		margin-right: 40px
 		margin-bottom: 40px
 		width: 35%
@@ -1396,13 +1417,18 @@
 			height: auto
 
 	&__text
+		width: 60%
 		font-size: 18px
 		line-height: 1.2
 
 		+r(1200)
 			font-size: 18px
 
+		+r(767)
+			width: 100%
+
 	&__date
+		display: block
 		margin-top: 10px
 		color: $accent
 		text-align: right
@@ -1478,14 +1504,14 @@
 		transform: translate(-50%, -50%) rotate(180deg)
 
 		+r(576)
-			transform: translate(-10px, -50%)
+			transform: translate(-50%, -50%)
 
 	&__next
 		right: 0
 		transform: translate(50%, -50%)
 
 		+r(576)
-			transform: translate(10px, -50%) rotate(180deg)
+			transform: translate(-50%, -50%) rotate(180deg)
 
 
 //------SERVICES---------
@@ -2142,3 +2168,31 @@
 
 	.header
 		top: 30px
+
+
+.caldera_forms_form
+	.help-block
+		position: absolute
+		bottom: -10px
+		right: 25px
+		left: 25px
+		transition: all .3s
+		animation: error .3s linear 1 forwards
+		color: #fff !important
+		text-align: center
+		font-weight: 600
+		background-color: red
+		border-radius: 10px
+		z-index: 1
+
+		&::before
+			content: ''
+			position: absolute
+			left: 50%
+			top: -8px
+			margin-left: -2px
+			border-bottom: 4px solid red
+			border-left: 4px solid transparent
+			border-right: 4px solid transparent
+			border-top: 4px solid transparent
+

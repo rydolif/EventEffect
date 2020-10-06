@@ -28,7 +28,7 @@
 	add_action( 'init', 'true_jquery_register' );
 	function true_jquery_register() {
 		if ( !is_admin() ) {
-			wp_deregister_script( 'jquery' );
+			// wp_deregister_script( 'jquery' );
 			wp_register_script( 'jquery', ( get_template_directory_uri() . '/assets/libs/jquery.min.js' ), false, null, true );
 			wp_enqueue_script( 'jquery' );
 		}
@@ -67,19 +67,19 @@
   ));
 
 //------------------Register Custom Post Каталог----------------------
-  function nomer_post_type() {
+  function blog_post_type() {
       $labels = array(
-          'name'                  => _x( 'Каталог', 'Post Type General Name', 'text_domain' ),
-          'singular_name'         => _x( 'Каталог', 'Post Type Singular Name', 'text_domain' ),
-          'menu_name'             => __( 'Каталог', 'text_domain' ),
-          'all_items'             => __( 'Каталог', 'text_domain' ),
-          'add_new_item'          => __( 'Добавить Номер', 'text_domain' ),
-          'add_new'               => __( 'Добавить Номер', 'text_domain' ),
+          'name'                  => _x( 'Блог', 'Post Type General Name', 'text_domain' ),
+          'singular_name'         => _x( 'Блог', 'Post Type Singular Name', 'text_domain' ),
+          'menu_name'             => __( 'Блог', 'text_domain' ),
+          'all_items'             => __( 'Блог', 'text_domain' ),
+          'add_new_item'          => __( 'Добавить пост', 'text_domain' ),
+          'add_new'               => __( 'Добавить пост', 'text_domain' ),
       );
       $args = array(
-          'label'                 => __( 'Каталог', 'text_domain' ),
+          'label'                 => __( 'Блог', 'text_domain' ),
           'labels'                => $labels,
-          'supports'              => array( 'title'),// 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+          'supports'              => array( 'title', 'editor', 'thumbnail'),// 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
           'hierarchical'          => false,
           'public'                => true,
           'show_ui'               => true,
@@ -94,387 +94,85 @@
           'publicly_queryable'    => true,
           'capability_type'       => 'page',
       );
-      register_post_type( 'nomer', $args );
+      register_post_type( 'blog', $args );
   }
-  add_action( 'init', 'nomer_post_type', 0 );
+  add_action( 'init', 'blog_post_type', 0 );
 
+	add_filter('excerpt_more', function($more) {
+		return '...';
+	});
 
-//------------------ "Хлебные крошки" для WordPress----------------------
-  function dimox_breadcrumbs() {
-    /* === ОПЦИИ === */
-    $text['home'] = 'Главная'; // текст ссылки "Главная"
-    $text['category'] = '%s'; // текст для страницы рубрики
-    $text['search'] = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
-    $text['tag'] = 'Записи с тегом "%s"'; // текст для страницы тега
-    $text['author'] = 'Статьи автора %s'; // текст для страницы автора
-    $text['404'] = 'Ошибка 404'; // текст для страницы 404
-    $text['page'] = 'Страница %s'; // текст 'Страница N'
-    $text['cpage'] = 'Страница комментариев %s'; // текст 'Страница комментариев N'
-    $wrap_before = '<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
-    $wrap_after = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
-    $sep = '<span class="breadcrumbs__separator"> › </span>'; // разделитель между "крошками"
-    $before = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
-    $after = '</span>'; // тег после текущей "крошки"
-    $show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
-    $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
-    $show_current = 1; // 1 - показывать название текущей страницы, 0 - не показывать
-    $show_last_sep = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
-    /* === КОНЕЦ ОПЦИЙ === */
-    global $post;
-    $home_url = home_url('/');
-    $link = '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-    $link .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
-    $link .= '<meta itemprop="position" content="%3$s" />';
-    $link .= '</span>';
-    $parent_id = ( $post ) ? $post->post_parent : '';
-    $home_link = sprintf( $link, $home_url, $text['home'], 1 );
-    if ( is_home() || is_front_page() ) {
-      if ( $show_on_home ) echo $wrap_before . $home_link . $wrap_after;
-    } else {
-      $position = 0;
-      echo $wrap_before;
-      if ( $show_home_link ) {
-        $position += 1;
-        echo $home_link;
-      }
-      if ( is_category() ) {
-        $parents = get_ancestors( get_query_var('cat'), 'category' );
-        foreach ( array_reverse( $parents ) as $cat ) {
-          $position += 1;
-          if ( $position > 1 ) echo $sep;
-          echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-        }
-        if ( get_query_var( 'paged' ) ) {
-          $position += 1;
-          $cat = get_query_var('cat');
-          echo $sep . sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-          echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-        } else {
-          if ( $show_current ) {
-            if ( $position >= 1 ) echo $sep;
-            echo $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
-          } elseif ( $show_last_sep ) echo $sep;
-        }
-      } elseif ( is_search() ) {
-        if ( $show_home_link && $show_current || ! $show_current && $show_last_sep ) echo $sep;
-        if ( $show_current ) echo $before . sprintf( $text['search'], get_search_query() ) . $after;
-      } elseif ( is_year() ) {
-        if ( $show_home_link && $show_current ) echo $sep;
-        if ( $show_current ) echo $before . get_the_time('Y') . $after;
-        elseif ( $show_home_link && $show_last_sep ) echo $sep;
-      } elseif ( is_month() ) {
-        if ( $show_home_link ) echo $sep;
-        $position += 1;
-        echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position );
-        if ( $show_current ) echo $sep . $before . get_the_time('F') . $after;
-        elseif ( $show_last_sep ) echo $sep;
-      } elseif ( is_day() ) {
-        if ( $show_home_link ) echo $sep;
-        $position += 1;
-        echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position ) . $sep;
-        $position += 1;
-        echo sprintf( $link, get_month_link( get_the_time('Y'), get_the_time('m') ), get_the_time('F'), $position );
-        if ( $show_current ) echo $sep . $before . get_the_time('d') . $after;
-        elseif ( $show_last_sep ) echo $sep;
-      } elseif ( is_single() && ! is_attachment() ) {
-        if ( get_post_type() != 'post' ) {
-          $position += 1;
-          $post_type = get_post_type_object( get_post_type() );
-          if ( $position > 1 ) echo $sep;
-          echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
-          if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-          elseif ( $show_last_sep ) echo $sep;
-        } else {
-          $cat = get_the_category(); $catID = $cat[0]->cat_ID;
-          $parents = get_ancestors( $catID, 'category' );
-          $parents = array_reverse( $parents );
-          $parents[] = $catID;
-          foreach ( $parents as $cat ) {
-            $position += 1;
-            if ( $position > 1 ) echo $sep;
-            echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-          }
-          if ( get_query_var( 'cpage' ) ) {
-            $position += 1;
-            echo $sep . sprintf( $link, get_permalink(), get_the_title(), $position );
-            echo $sep . $before . sprintf( $text['cpage'], get_query_var( 'cpage' ) ) . $after;
-          } else {
-            if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-            elseif ( $show_last_sep ) echo $sep;
-          }
-        }
-      } elseif ( is_post_type_archive() ) {
-        $post_type = get_post_type_object( get_post_type() );
-        if ( get_query_var( 'paged' ) ) {
-          $position += 1;
-          if ( $position > 1 ) echo $sep;
-          echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
-          echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-        } else {
-          if ( $show_home_link && $show_current ) echo $sep;
-          if ( $show_current ) echo $before . $post_type->label . $after;
-          elseif ( $show_home_link && $show_last_sep ) echo $sep;
-        }
-      } elseif ( is_attachment() ) {
-        $parent = get_post( $parent_id );
-        $cat = get_the_category( $parent->ID ); $catID = $cat[0]->cat_ID;
-        $parents = get_ancestors( $catID, 'category' );
-        $parents = array_reverse( $parents );
-        $parents[] = $catID;
-        foreach ( $parents as $cat ) {
-          $position += 1;
-          if ( $position > 1 ) echo $sep;
-          echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-        }
-        $position += 1;
-        echo $sep . sprintf( $link, get_permalink( $parent ), $parent->post_title, $position );
-        if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-        elseif ( $show_last_sep ) echo $sep;
-      } elseif ( is_page() && ! $parent_id ) {
-        if ( $show_home_link && $show_current ) echo $sep;
-        if ( $show_current ) echo $before . get_the_title() . $after;
-        elseif ( $show_home_link && $show_last_sep ) echo $sep;
-      } elseif ( is_page() && $parent_id ) {
-        $parents = get_post_ancestors( get_the_ID() );
-        foreach ( array_reverse( $parents ) as $pageID ) {
-          $position += 1;
-          if ( $position > 1 ) echo $sep;
-          echo sprintf( $link, get_page_link( $pageID ), get_the_title( $pageID ), $position );
-        }
-        if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-        elseif ( $show_last_sep ) echo $sep;
-      } elseif ( is_tag() ) {
-        if ( get_query_var( 'paged' ) ) {
-          $position += 1;
-          $tagID = get_query_var( 'tag_id' );
-          echo $sep . sprintf( $link, get_tag_link( $tagID ), single_tag_title( '', false ), $position );
-          echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-        } else {
-          if ( $show_home_link && $show_current ) echo $sep;
-          if ( $show_current ) echo $before . sprintf( $text['tag'], single_tag_title( '', false ) ) . $after;
-          elseif ( $show_home_link && $show_last_sep ) echo $sep;
-        }
-      } elseif ( is_author() ) {
-        $author = get_userdata( get_query_var( 'author' ) );
-        if ( get_query_var( 'paged' ) ) {
-          $position += 1;
-          echo $sep . sprintf( $link, get_author_posts_url( $author->ID ), sprintf( $text['author'], $author->display_name ), $position );
-          echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-        } else {
-          if ( $show_home_link && $show_current ) echo $sep;
-          if ( $show_current ) echo $before . sprintf( $text['author'], $author->display_name ) . $after;
-          elseif ( $show_home_link && $show_last_sep ) echo $sep;
-        }
-      } elseif ( is_404() ) {
-        if ( $show_home_link && $show_current ) echo $sep;
-        if ( $show_current ) echo $before . $text['404'] . $after;
-        elseif ( $show_last_sep ) echo $sep;
-      } elseif ( has_post_format() && ! is_singular() ) {
-        if ( $show_home_link && $show_current ) echo $sep;
-        echo get_post_format_string( get_post_format() );
-      }
-      echo $wrap_after;
-    }
-  } // end of dimox_breadcrumbs()
-
+	add_filter( 'excerpt_length', function(){
+		return 20;
+	} );
 
 //------------------пагинация----------------------
-    function wptuts_pagination( $args = array() ) {
-        
-        $defaults = array(
-            'range'           => 4,
-            'custom_query'    => FALSE,
-            'previous_string' => __( '«', 'text-domain' ),
-            'next_string'     => __( '»', 'text-domain' ),
-            'before_output'   => '<nav class="navigation pagination">',
-            'after_output'    => '</nav>'
-        );
-        
-        $args = wp_parse_args( 
-            $args, 
-            apply_filters( 'wp_bootstrap_pagination_defaults', $defaults )
-        );
-        
-        $args['range'] = (int) $args['range'] - 1;
-        if ( !$args['custom_query'] )
-            $args['custom_query'] = @$GLOBALS['wp_query'];
-        $count = (int) $args['custom_query']->max_num_pages;
-        $page  = intval( get_query_var( 'paged' ) );
-        $ceil  = ceil( $args['range'] / 2 );
-        
-        if ( $count <= 1 )
-            return FALSE;
-        
-        if ( !$page )
-            $page = 1;
-        
-        if ( $count > $args['range'] ) {
-            if ( $page <= $args['range'] ) {
-                $min = 1;
-                $max = $args['range'] + 1;
-            } elseif ( $page >= ($count - $ceil) ) {
-                $min = $count - $args['range'];
-                $max = $count;
-            } elseif ( $page >= $args['range'] && $page < ($count - $ceil) ) {
-                $min = $page - $ceil;
-                $max = $page + $ceil;
-            }
-        } else {
-            $min = 1;
-            $max = $count;
-        }
-        
-        $echo = '';
-        $previous = intval($page) - 1;
-        $previous = esc_attr( get_pagenum_link($previous) );
-            if ( $previous && (1 != $page) )
-            $echo .= '<a href="' . $previous . '" title="' . __( '', 'text-domain') . '">' . $args['previous_string'] . '</a>';
-        
-        if ( !empty($min) && !empty($max) ) {
-            for( $i = $min; $i <= $max; $i++ ) {
-                if ($page == $i) {
-                    $echo .= '<span class="active">' . str_pad( (int)$i, 1, '0', STR_PAD_LEFT ) . '</span>';
-                } else {
-                    $echo .= sprintf( '<a href="%s">%2d</a>', esc_attr( get_pagenum_link($i) ), $i );
-                }
-            }
-        }
-        
-        $next = intval($page) + 1;
-        $next = esc_attr( get_pagenum_link($next) );
-        if ($next && ($count != $page) )
-            $echo .= '<a href="' . $next . '" title="' . __( '', 'text-domain') . '">' . $args['next_string'] . '</a>';
-        
-        if ( isset($echo) )
-            echo $args['before_output'] . $echo . $args['after_output'];
-    }
-
-/**
- * ACF Load More Repeater
-*/
-
-// add action for logged in users
-add_action('wp_ajax_my_repeater_show_more', 'my_repeater_show_more');
-// add action for non logged in users
-add_action('wp_ajax_nopriv_my_repeater_show_more', 'my_repeater_show_more');
-
-function my_repeater_show_more() {
-	// validate the nonce
-	if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'my_repeater_field_nonce')) {
-		exit;
-	}
-	// make sure we have the other values
-	if (!isset($_POST['post_id']) || !isset($_POST['offset'])) {
-		return;
-	}
-	$show = 3; // how many more to show
-	$start = $_POST['offset'];
-	$end = $start+$show;
-	$post_id = $_POST['post_id'];
-	// use an object buffer to capture the html output
-	// alternately you could create a varaible like $html
-	// and add the content to this string, but I find
-	// object buffers make the code easier to work with
-	ob_start();
-	if (have_rows('work', $post_id)) {
-		$total = count(get_field('work', $post_id));
-		$count = 0;
-		while (have_rows('work', $post_id)) {
-			the_row();
-			if ($count < $start) {
-				// we have not gotten to where
-				// we need to start showing
-				// increment count and continue
-				$count++;
-				continue;
+	function wptuts_pagination( $args = array() ) {
+			
+			$defaults = array(
+					'range'           => 4,
+					'custom_query'    => FALSE,
+					'previous_string' => __( '«', 'text-domain' ),
+					'next_string'     => __( '»', 'text-domain' ),
+					'before_output'   => '<nav class="navigation pagination">',
+					'after_output'    => '</nav>'
+			);
+			
+			$args = wp_parse_args( 
+					$args, 
+					apply_filters( 'wp_bootstrap_pagination_defaults', $defaults )
+			);
+			
+			$args['range'] = (int) $args['range'] - 1;
+			if ( !$args['custom_query'] )
+					$args['custom_query'] = @$GLOBALS['wp_query'];
+			$count = (int) $args['custom_query']->max_num_pages;
+			$page  = intval( get_query_var( 'paged' ) );
+			$ceil  = ceil( $args['range'] / 2 );
+			
+			if ( $count <= 1 )
+					return FALSE;
+			
+			if ( !$page )
+					$page = 1;
+			
+			if ( $count > $args['range'] ) {
+					if ( $page <= $args['range'] ) {
+							$min = 1;
+							$max = $args['range'] + 1;
+					} elseif ( $page >= ($count - $ceil) ) {
+							$min = $count - $args['range'];
+							$max = $count;
+					} elseif ( $page >= $args['range'] && $page < ($count - $ceil) ) {
+							$min = $page - $ceil;
+							$max = $page + $ceil;
+					}
+			} else {
+					$min = 1;
+					$max = $count;
 			}
-			?>
-        <a  href="<?php the_sub_field('img'); ?>" data-fancybox="gallery" class="page--work__item work__item transform" data-img="<?php the_sub_field('img'); ?>">
-          <img class="img-gallery" alt="BeWILDerwood Gallery" src="<?php the_sub_field('img'); ?>" />
-        </a>
-			<?php 
-			$count++;
-			if ($count == $end) {
-				// we've shown the number, break out of loop
-				break;
+			
+			$echo = '';
+			$previous = intval($page) - 1;
+			$previous = esc_attr( get_pagenum_link($previous) );
+					if ( $previous && (1 != $page) )
+					$echo .= '<a href="' . $previous . '" title="' . __( '', 'text-domain') . '">' . $args['previous_string'] . '</a>';
+			
+			if ( !empty($min) && !empty($max) ) {
+					for( $i = $min; $i <= $max; $i++ ) {
+							if ($page == $i) {
+									$echo .= '<span class="active">' . str_pad( (int)$i, 1, '0', STR_PAD_LEFT ) . '</span>';
+							} else {
+									$echo .= sprintf( '<a href="%s">%2d</a>', esc_attr( get_pagenum_link($i) ), $i );
+							}
+					}
 			}
-		} // end while have rows
-	} // end if have rows
-	$content = ob_get_clean();
-	// check to see if we've shown the last item
-	$more = false;
-	if ($total > $count) {
-		$more = true;
+			
+			$next = intval($page) + 1;
+			$next = esc_attr( get_pagenum_link($next) );
+			if ($next && ($count != $page) )
+					$echo .= '<a href="' . $next . '" title="' . __( '', 'text-domain') . '">' . $args['next_string'] . '</a>';
+			
+			if ( isset($echo) )
+					echo $args['before_output'] . $echo . $args['after_output'];
 	}
-	// output our 3 values as a json encoded array
-	echo json_encode(array('content' => $content, 'more' => $more, 'offset' => $end));
-	exit;
-} // end function my_repeater_show_more
-
-
-
-/**
- * ACF Load More Repeater
-*/
-
-// add action for logged in users
-add_action('wp_ajax_my_repeater_show', 'my_repeater_show');
-// add action for non logged in users
-add_action('wp_ajax_nopriv_my_repeater_show', 'my_repeater_show');
-
-function my_repeater_show() {
-	// validate the nonce
-	if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'my_repeater_field')) {
-		exit;
-	}
-	// make sure we have the other values
-	if (!isset($_POST['post_id']) || !isset($_POST['offset'])) {
-		return;
-	}
-	$show = 3; // how many more to show
-	$start = $_POST['offset'];
-	$end = $start+$show;
-	$post_id = $_POST['post_id'];
-	// use an object buffer to capture the html output
-	// alternately you could create a varaible like $html
-	// and add the content to this string, but I find
-	// object buffers make the code easier to work with
-	ob_start();
-	if (have_rows('list', $post_id)) {
-		$total = count(get_field('list', $post_id));
-		$count = 0;
-		while (have_rows('list', $post_id)) {
-			the_row();
-			if ($count < $start) {
-				// we have not gotten to where
-				// we need to start showing
-				// increment count and continue
-				$count++;
-				continue;
-			}
-			?>
-        <div class="page--nomera__item transform">
-          <img class="img-gallery" alt="img" src="<?php the_sub_field('img'); ?>" />
-          <p class="page--nomera__item_name"><?php the_sub_field('oblasts'); ?></p>
-          <p class="page--nomera__item_price"><b><?php the_sub_field('price'); ?> ₽</b></p>
-          <p class="page--nomera__item_text">под ключ</p>
-          <a href="#" class="btn buy_open">Купить</a>
-        </div>
-			<?php 
-			$count++;
-			if ($count == $end) {
-				// we've shown the number, break out of loop
-				break;
-			}
-		} // end while have rows
-	} // end if have rows
-	$content = ob_get_clean();
-	// check to see if we've shown the last item
-	$more = false;
-	if ($total > $count) {
-		$more = true;
-	}
-	// output our 3 values as a json encoded array
-	echo json_encode(array('content' => $content, 'more' => $more, 'offset' => $end));
-	exit;
-} // end function my_repeater_show_more

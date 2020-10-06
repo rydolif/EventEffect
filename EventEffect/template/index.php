@@ -22,55 +22,23 @@
 		</div>
 	</section>
 
-	<section class="info" id="info">
-		<div class="info__container container">
-			<div class="info__list">
-
-				<div class="info__item">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/info__icon4.svg" alt="">
-					<p>Полная готовность <br>интерактива по таймингу <br>- гарантия по договору </p>
-				</div>
-
-				<div class="info__item">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/info__icon3.svg" alt="">
-					<p>Уже более 7 лет <br>дерим позитивные <br>эмоции</p>
-				</div>
-
-				<div class="info__item">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/info__icon2.svg" alt="">
-					<p>Свыше 1 000 <br>мероприятий <br>за все время работы</p>
-				</div>
-
-				<div class="info__item">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/info__icon1.svg" alt="">
-					<p>Более 500 000 часов <br>безупречной работы <br>устройств</p>
-				</div>
-
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'parts/info' ); ?>
 
 	<section class="director">
 		<div class="director__container container">
 
 			<div class="director__description">
-				<h2 class="director__title">Здравствуйте,<br> Меня зовут <span>Виктор Чернышев</span></h2>
-				<p class="director__text">
-					Я основал event-effect.ru в 2014 году. Парк наших устройств увеличивался с 
-					каждым годом, и, безусловно, это не предел! Сейчас мы можем предложить различные 
-					интерактивы и активности для того, чтобы Ваше мероприятие было веселым, ярким и 
-					незабываемым! 
-					<br>Мне и моей команде нравится дарить людям позитивные эмоции, и мы 
-					рады Вам показать каждый шаг, который делается у нас в компании.  Буквально, как 
-					компания дышит.  Об этом Вы можете прочесть в моих социальных сетях.
-					Будем рады помочь в организации мероприятий любого формата и масштаба.
-				</p>
+				
+				<h2 class="director__title"><?php the_field('director__title', 'option'); ?></h2>
+				<div class="director__text">
+					<?php the_field('director__content', 'option'); ?>
+				</div>
 				<div class="director__soc">
 					<b>Подписывайтесь на мои социальные сети:</b>
-					<a href="#" target="_blank">
+					<a href="<?php the_field('instagram', 'option'); ?>" target="_blank">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/instagram.svg" alt="">
 					</a>
-					<a href="#" target="_blank">
+					<a href="<?php the_field('vk', 'option'); ?>" target="_blank">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/vk.svg" alt="">
 					</a>
 				</div>
@@ -78,7 +46,7 @@
 
 			<div class="director__img">
 				<div class="parallax parallax__circle"></div>
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/director__img.png" alt="">
+				<img src="<?php the_field('director__img', 'option'); ?>" alt="">
 			</div>
 
 		</div>
@@ -324,37 +292,6 @@
 		</div>
 	</section>
 
-	<section class="application">
-		<div class="application__container container">
-			
-			<div class="application__content">
-				<h2 class="application__title"><span>Оставьте заявку</span></h2>
-				<div class="application__subtitle">
-					наш менеджер свяжется с вами и предложит
-					<br>условия от которых вы не сможете отказаться!
-				</div>
-
-				<form class="application__form">
-					<div class="application__input">
-						<input type="text" name="name" placeholder="Имя" required>
-					</div>
-					<div class="application__input">
-						<input type="tel" name="phone" placeholder="Телефон" required>
-					</div>
-					<div class="application__input">
-						<input type="email" name="mail" placeholder="E-mail" required>
-					</div>
-					<div class="application__input">
-						<button class="application__btn">ОТПРАВИТЬ ЗАЯВКУ</button>
-					</div>
-				</form>
-			</div>
-
-			<div class="application__img">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/application__img.png" alt="">
-			</div>
-
-		</div>
-	</section>
+	<?php get_template_part( 'parts/application' ); ?>
 
 <?php get_footer(); ?>

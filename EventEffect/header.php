@@ -4,14 +4,14 @@
 <head>
 
 	<meta charset="utf-8">
-	<title><?php bloginfo('name'); ?><?php wp_title('|'); ?></title>
+	<title><?php wp_title(''); ?></title>
 	<meta name="viewport" content="width=device-width">
-	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon.ico">
-	<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/img/preview.jpg">
-
+	<link rel="icon" href="<?php the_field('favicon', 'option'); ?>">
+	<meta property="og:image" content="<?php the_field('preview', 'option'); ?>">
 
 	<?php wp_head(); ?>
 </head>
+
 <body>
 
 	<?php get_template_part( 'parts/header' ); ?>
