@@ -1,4 +1,6 @@
 
+
+<?php if( have_rows('finall') ): ?>
 	<section class="finall">
 		<div class="container">
 
@@ -6,33 +8,17 @@
 
 			<div class="slider-services">
 				<div class="swiper-wrapper">
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item1.jpg" alt="">
+
+				<?php while( have_rows('finall') ): the_row(); 
+					$img = get_sub_field('img');
+					$iframe = get_sub_field('iframe');
+					?>
+
+					<a data-fancybox href="<?php echo $iframe; ?>" class="swiper-slide" >
+						<img src="<?php echo $img; ?>" alt="">
 					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item2.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item3.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item4.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item5.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item6.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item7.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item8.jpg" alt="">
-					</a>
-					<a href="#" class="swiper-slide">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item9.jpg" alt="">
-					</a>
+				<?php endwhile; ?>
+
 				</div>
 				<!-- Add Arrows -->
 				<div class="slider-services__next"></div>
@@ -41,3 +27,4 @@
 
 		</div>
 	</section>
+<?php endif; ?>

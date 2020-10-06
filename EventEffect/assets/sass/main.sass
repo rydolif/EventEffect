@@ -453,6 +453,7 @@
 	padding: 180px 0
 	min-height: 100vh
 	display: flex
+ervices	color: #ffffff
 
 	+r(1500)
 		padding: 150px 0
@@ -508,12 +509,11 @@
 			width: 50%
 			opacity: 0.5
 
-	&__title
+	&__title, h1, h2
 		max-width: 73%
 		width: 100%
 		font-size: 48px
 		color: #ffffff
-		margin-bottom: 36px
 
 		+r(1200)
 			max-width: 88%
@@ -528,11 +528,15 @@
 			font-size: 26px
 			margin-bottom: 20px
 
+		span, b, strong
+			color: $accent
+
 	&__subtitle
 		max-width: 73%
 		width: 100%
 		font-size: 26px
 		color: #ffffff
+		margin-top: 36px
 		margin-bottom: 30px
 
 		+r(1200)
@@ -1582,6 +1586,7 @@
 	&__list
 		+between
 		align-items: flex-start
+		counter-reset: heading
 
 		+r(767)
 			justify-content: space-around
@@ -1644,6 +1649,10 @@
 			color: $accent
 			font-weight: 800
 
+			&::before
+				counter-increment: heading
+				content: counter(heading)
+
 			+r(1200)
 				width: 25px
 				height: 25px
@@ -1679,7 +1688,6 @@
 	background-image: url(../img/interactive__bg.png)
 	background-position: bottom center
 	background-repeat: repeat-x
-	// background-size: cover
 	padding-bottom: 75px
 	z-index: 1
 
@@ -1727,7 +1735,7 @@
 		+r(1200)
 			margin-bottom: 15px
 	
-	&__subtitle
+	&__subtitle, h3
 		font-size: 28px
 		margin-bottom: 20px
 

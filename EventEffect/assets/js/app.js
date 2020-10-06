@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		};
 		scrollTo('.hero__arrow');
+		scrollTo('.wrapp-button');
 	
 	//----------------------FIXED-HEADER-----------------------
 		const headerFixed = (headerFixed, headerActive) => {
