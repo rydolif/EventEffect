@@ -1,4 +1,5 @@
 
+<?php if( have_rows('popular') ): ?>
 	<section class="popular">
 		<div class="container">
 
@@ -6,27 +7,21 @@
 
 			<div class="popular__list">
 
-				<a href="#" class="popular__item">
-					<span>ФОТОМАГНИТЫ</span>
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item1.jpg" alt="">
-				</a>
+				<?php while( have_rows('popular') ): the_row(); 
+					$img = get_sub_field('img');
+					$title = get_sub_field('title');
+					$link = get_sub_field('link');
+					?>
 
-				<a href="#" class="popular__item">
-					<span>ФОТОМАГНИТЫ</span>
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item2.jpg" alt="">
-				</a>
+					<a href="<?php echo $link; ?>" class="popular__item">
+						<span><?php echo $title; ?></span>
+						<img src="<?php echo $img; ?>" alt="">
+					</a>
 
-				<a href="#" class="popular__item">
-					<span>ФОТОМАГНИТЫ</span>
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item3.jpg" alt="">
-				</a>
-
-				<a href="#" class="popular__item">
-					<span>ФОТОМАГНИТЫ</span>
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/services__item6.jpg" alt="">
-				</a>
-
+				<?php endwhile; ?>
+			
 			</div>
 
 		</div>
 	</section>
+<?php endif; ?>

@@ -1,6 +1,6 @@
 
 
-<?php if( have_rows('finall') ): ?>
+<?php if( have_rows('finall', 'option') ): ?>
 	<section class="finall">
 		<div class="container">
 
@@ -9,9 +9,9 @@
 			<div class="slider-services">
 				<div class="swiper-wrapper">
 
-				<?php while( have_rows('finall') ): the_row(); 
-					$img = get_sub_field('img');
-					$iframe = get_sub_field('iframe');
+				<?php while( have_rows('finall', 'option') ): the_row(); 
+					$img = get_sub_field('img', 'option');
+					$iframe = get_sub_field('iframe', 'option');
 					?>
 
 					<a data-fancybox href="<?php echo $iframe; ?>" class="swiper-slide" >

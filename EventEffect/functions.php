@@ -8,7 +8,9 @@
     //---------------js---------------------
     wp_enqueue_script( 'main-sctipt', get_template_directory_uri() . '/assets/js/app.min.js', array(), '', true );
     wp_enqueue_script( 'fancybox-sctipt', get_template_directory_uri() . '/assets/libs/fancybox/jquery.fancybox.min.js', array(), '', true );
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    wp_enqueue_script( 'typed-sctipt', get_template_directory_uri() . '/assets/libs/typed.js', array(), '', true );
+		
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
     }
   }

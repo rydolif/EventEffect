@@ -4,29 +4,50 @@
 		<img src="<?php echo get_template_directory_uri(); ?>/assets/img/parallax1.png" alt="" class="parallax parallax__arrow-left">
 		<img src="<?php echo get_template_directory_uri(); ?>/assets/img/parallax2.png" alt="" class="parallax parallax__arrow-right">
 
-		<div class="description__container container">
+		<div class="description__container container tabs">
 
-			<div class="description__img">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/description__img1.png" alt="">
-			</div>
+			<?php if( have_rows('gallery') ): ?>
+				<?php while( have_rows('gallery') ): the_row(); 
+					$image = get_sub_field('image');
+					?>
+
+					<div class="description__img tabs__wrap">
+						<img src="<?php echo $image; ?>" alt="">
+					</div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
 
 			<div class="description__content">
 				<div class="description__content_text">
-					<p>
-						Bubble Heads — это необычный фотосувенир, основу которого составляют 2D модели 
-						известных для всех персонажей: героев мультиков и фильмов, супергероев, представителей 
-						профессий и моды. 
-					</p>
-					<p>
-						Голова же фигурки – это портретная фотография гостей, сделанная в 
-						течение мероприятия, при этом она выглядит больше туловища, что придаёт сувениру забавные черты.
-					</p>
+					<?php the_field('content'); ?>
 				</div>
-				<a href="#" class="btn btn--play">
+
+				<?php if( have_rows('gallery') ): ?>
+					<div class="description__tabs_wrap">
+						<?php while( have_rows('gallery') ): the_row(); 
+							$tab__text = get_sub_field('tab__text');
+							$tab__img = get_sub_field('tab__img');
+						?>
+							<div class="description__tabs_item tabs__item">
+								<img src="<?php echo $tab__img; ?>" alt="">
+								<p><?php echo $tab__text; ?></p>
+							</div>
+						<?php endwhile; ?>
+					</div>
+				<?php endif; ?>
+
+				<a data-fancybox href="<?php the_field('iframe'); ?>" class="btn btn--play">
 					<span>Смотреть видео <br>о Bubble Heads</span>
 					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/play.png" alt="">
 				</a>
 			</div>
 
+
 		</div>
 	</section>
+
+
+
+
+

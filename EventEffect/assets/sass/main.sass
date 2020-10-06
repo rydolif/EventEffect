@@ -453,7 +453,7 @@
 	padding: 180px 0
 	min-height: 100vh
 	display: flex
-ervices	color: #ffffff
+	color: #ffffff
 
 	+r(1500)
 		padding: 150px 0
@@ -510,13 +510,10 @@ ervices	color: #ffffff
 			opacity: 0.5
 
 	&__title, h1, h2
-		max-width: 73%
 		width: 100%
 		font-size: 48px
 		color: #ffffff
 
-		+r(1200)
-			max-width: 88%
 		
 		+r(992)
 			max-width: 100%
@@ -1024,6 +1021,14 @@ ervices	color: #ffffff
 			button
 				padding: 0
 
+	.caldera-grid .alert-success
+		background: transparent
+		color: $text
+		font-size: 20px
+		
+		+r(576)
+			font-size: 18px
+
 
 .footer
 	background-color: #1a1a1d
@@ -1379,11 +1384,11 @@ ervices	color: #ffffff
 
 
 .article
-	padding: 80px 0
+	padding: 80px 0 0
 	box-shadow: inset 0 15px 25px 0 rgba(#000, .1)
 
 	+r(992)
-		padding: 40px 0
+		padding: 40px 0 0
 
 	&__content
 		display: flex
@@ -1440,6 +1445,10 @@ ervices	color: #ffffff
 	&__btn
 		display: flex
 		justify-content: center
+		padding-bottom: 80px
+
+		+r(992)
+			padding-bottom: 40px
 
 		a
 			@extend .btn
@@ -1568,6 +1577,39 @@ ervices	color: #ffffff
 	.btn
 		+r(767)
 			margin: 0 auto
+
+	&__tabs
+
+		&_wrap
+			display: flex
+			justify-content: space-between
+			align-items: center
+			flex-wrap: wrap
+			margin-bottom: 30px
+		
+		&_item
+			cursor: pointer
+			width: 48%
+			display: flex
+			align-items: center
+			font-weight: 700
+
+			+r(480)
+				width: 100%
+				margin-bottom: 20px
+				justify-content: center
+
+
+			img
+				width: 100px
+				height: 100px
+				border-radius: 50%
+				margin-right: 20px
+				box-shadow: 0 0 20px 0 rgba($text, .4)
+
+				+r(992)
+					width: 60px
+					height: 60px
 
 
 .work
@@ -1903,9 +1945,11 @@ ervices	color: #ffffff
 
 
 .question
+	padding-top: 40px
 	padding-bottom: 80px
 
 	+r(1200)
+		padding-top: 20px
 		padding-bottom: 40px
 
 	&__title
@@ -2048,17 +2092,21 @@ ervices	color: #ffffff
 .modal
 	display: none
 	justify-content: center
-	align-items: center
+	align-items: flex-start
 	position: fixed
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%)
-	width: 110vw
-	height: 110vh
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	width: 100vw
+	min-height: 110vh
+	height: 100%
 	padding: 30px
 	z-index: 10000
 	+cover
 	background-image: url(../img/modal__bg.jpg)
+	padding: 10% 0
+	overflow: auto
 
 	&--open
 		position: relative
@@ -2110,13 +2158,12 @@ ervices	color: #ffffff
 
 	&__form
 		position: relative
-		margin: 20px 0
 		z-index: 1
 		box-shadow: 0 0 16px rgba(0, 0, 0, 0.29)
 		border-radius: 20px
 		background-color: rgba(#1a1a1d, .7)
 		width: 100%
-		max-width: 860px
+		max-width: 700px
 		text-align: center
 		padding: 60px 40px
 		color: #ffffff
@@ -2129,7 +2176,14 @@ ervices	color: #ffffff
 	&__title
 		@extend .director__title
 		text-transform: uppercase
-	
+		margin-bottom: 10px
+
+	h3
+		font-size: 22px
+
+		+r(992)
+			font-size: 20px
+
 	&__subtitle
 		@extend .services__subtitle
 		font-weight: 500
@@ -2170,6 +2224,82 @@ ervices	color: #ffffff
 		&:focus
 			box-shadow: 0 0 5px 0 rgba($accent, .4)
 
+	&__radio
+
+	.caldera-grid .radio,
+	.caldera-grid .checkbox
+		margin: 0
+		padding: 0
+
+	.radio, .checkbox
+		padding: 0
+		text-align: left
+		max-width: 320px
+		margin: 0 auto 15px !important
+
+	.control-label
+		font-size: 20px
+		margin-bottom: 15px
+
+	.caldera-grid .radio,
+	.caldera-grid .checkbox
+		label
+			position: relative
+			padding-left: 40px
+			font-size: 18px
+		
+		input
+			position: absolute
+			left: 0
+			top: 50%
+			transform: translate(0, -50%)
+			width: 20px !important
+			height: 20px !important
+			margin: 0 !important
+			padding: 0 !important
+			border-radius: 0 !important
+
+	.caldera-grid .alert-success
+		background: transparent
+		font-size: 22px
+		color: #fff
+
+		+r(576)
+			font-size: 18px
+
+	.btn
+		position: relative !important
+		display: flex !important
+		justify-content: center !important
+		align-items: center !important
+		height: 55px !important
+		font-size: 16px !important
+		color: #fff !important
+		background-color: $accent !important
+		font-weight: 700 !important
+		border-radius: 5px !important
+		max-width: fit-content !important
+		border-bottom: 4px solid #ae132e !important
+		padding: 0 50px !important
+		margin: 20px auto 0 !important
+
+		+r(992)
+			height: 50px !important
+			font-size: 16px !important
+
+		+r(767)
+			padding: 0 20px !important
+
+		&:hover,
+		&:focus
+			border-bottom: 4px solid #ae132e !important
+			background: $accent !important
+			color: #fff !important
+			box-shadow: 0 0 15px 0 rgba(#fff, .5) !important
+		
+		&:focus
+			box-shadow: 0 0 15px 0 rgba(#fff, .3) !important
+
 
 //----------WP-----------
 .customize-support
@@ -2181,7 +2311,7 @@ ervices	color: #ffffff
 .caldera_forms_form
 	.help-block
 		position: absolute
-		bottom: -10px
+		bottom: -15px
 		right: 25px
 		left: 25px
 		transition: all .3s
@@ -2204,3 +2334,8 @@ ervices	color: #ffffff
 			border-right: 4px solid transparent
 			border-top: 4px solid transparent
 
+.form-group
+	position: relative
+
+.help-block
+	margin: 0 auto !important

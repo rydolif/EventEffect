@@ -1,11 +1,12 @@
 
+
 	<section class="director director--no-bg">
 		<div class="director__container container">
 
 			<div class="director__description">
-				<h2 class="director__title"><?php the_field('director__title', 'option'); ?></span></h2>
+				<h2 class="director__title"><?php the_field('director__title'); ?></span></h2>
 				<div class="director__text">
-					<?php the_field('director__content', 'option'); ?>
+					<?php the_field('director__content'); ?>
 				</div>
 				<div class="director__soc">
 					<b>Подписывайтесь на мои социальные сети:</b>
@@ -20,7 +21,7 @@
 
 			<div class="director__img">
 				<div class="parallax parallax__circle"></div>
-				<img src="<?php the_field('director__img', 'option'); ?>" alt="">
+				<img src="<?php the_field('director__img'); ?>" alt="">
 			</div>
 
 		</div>

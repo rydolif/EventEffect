@@ -1,6 +1,6 @@
 
 	<div class="modal modal--order">
-		<form action="sendmail.php" class="modal__form form" method="post">
+		<div action="sendmail.php" class="modal__form form" method="post">
 
 			<button class="modal__close" type="button">
 				<span></span>
@@ -8,18 +8,10 @@
 			</button>
 
 			<h2 class="modal__title">Получить скидку</h2>
-			<input type="hidden" name="subject" value="Оставьте заявку на услугу">
 
-			<div class="modal__line">
-				<input type="text" name="name" placeholder="Имя" class="modal__input" required>
-			</div>
-			<div class="modal__line">
-				<input type="tel" name="phone" placeholder="Телефон" class="modal__input" required>
-			</div>
-			<div class="modal__line">
-				<button type="submit" class="modal__btn" name="submit">Отправить</button>
-			</div>
-		</form>
+			<?php echo do_shortcode('[caldera_form id="CF5f7c9d7a646f7"]') ?>
+
+		</div>
 	</div>
 
 	<div class="modal modal--thanks">
